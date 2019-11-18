@@ -27,7 +27,7 @@ $ sudo apt install virtualenv python3-virtualenv
 Luego para crear su ambiente virtual:
 
 ```sh
-$ virtualenv <nombre_del_ambiente> -p python3 
+$ virtualenv {nombre_del_ambiente} -p python3 
 ```
 
 Esto creara una carpeta con el nombre de ambiente que le hayan asignado.
@@ -36,7 +36,7 @@ Seguidamente activar el ambiente e instalar las librerias de python necesarias p
 #### Activación del ambiente
 
 ```sh
-$ source <nombre_del_ambiente_creado>/bin/activate
+$ source {nombre_del_ambiente_creado}/bin/activate
 ```
 
 Una vez se haya activado el ambiente instalar las librerias del proyecto
