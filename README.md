@@ -43,7 +43,7 @@ Una vez se haya activado el ambiente instalar las librerias del proyecto
 ### Instalacion de librerias
 
 ```sh
-$ pip install requirements.txt
+$ pip install -r requirements.txt
 ```
 
 En caso de usar una libreria nueva o actualizar una libreria existente, guardar los cambios en el archivo ***requirements.txt*** asi
