@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from .forms import FormularioRegistroClientes, FormularioRegistroEmpleados
+from django.contrib.auth import login
 
 def home(request):
     
@@ -13,10 +14,10 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('usuarios:inicio')
+            return redirect('usuarios:home')
     else:
         form = AuthenticationForm()
-    return render(request, 'usuarios/login.html', {'form': form})
+    return render(request, 'Usuarios/login.html', {'form': form})
 
 def CrearEmpleado(request):
     if request.method == 'POST':
