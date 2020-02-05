@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from .forms import FormularioRegistroClientes, FormularioRegistroEmpleados
 from django.contrib.auth import login
+from .models import Empleados, Clientes 
 
 def home(request):
     
@@ -26,6 +27,9 @@ def CrearEmpleado(request):
             a = form.save(commit=False)
             cedula = form.cleaned_data.get('cedula')
             a.username = cedula
+            rol = form.cleaned_data.get('roles')
+            if rol == 'gerente' or rol == 'administrador':
+                a.is_superuser = True
             a.save()
             messages.success(request, 'Usuario creado exitosamente')
             return redirect('usuarios:home')
@@ -33,3 +37,8 @@ def CrearEmpleado(request):
         form = FormularioRegistroEmpleados()
 
     return render(request, 'Usuarios/CrearUsuario.html', {'form': form})
+
+def ListaEmpleado(request):
+    usuarios = Empleados.objects.all()
+    return render(request, 'Usuarios/ListaEmpleados.html', {'usuarios': usuarios})
+

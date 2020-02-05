@@ -32,35 +32,19 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Logout</p>
 
-      <form method="post">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        <div class="row">
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-          </div>
-        </div>
-      </form>
+      <h3 class="text-center">¡Cerraste sesión!</h3>
+      <a href="{% url 'usuarios:login' %}">
+        <button type="submit" class="btn btn-primary btn-block">Vuelve a iniciar sesión</button>
+      </a>
+      
+        <p class="text-center"> Ó </p>
+      
+      <a href="{% url 'usuarios:home' %}">
+        <button type="submit" class="btn btn-primary btn-block">Vuelve al inicio</button>
+      </a>
 
-      <div class="social-auth-links text-center mb-3">
-        <p>- OR -</p>
-        <a href="https://adminlte.io/themes/dev/AdminLTE/pages/examples/login.html#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-        </a>
-        <a href="https://adminlte.io/themes/dev/AdminLTE/pages/examples/login.html#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-        </a>
-      </div>
-      <!-- /.social-auth-links -->
-
-      <p class="mb-1">
-        <a href="https://adminlte.io/themes/dev/AdminLTE/pages/examples/forgot-password.html">I forgot my password</a>
-      </p>
-      <p class="mb-0">
-        <a href="https://adminlte.io/themes/dev/AdminLTE/pages/examples/register.html" class="text-center">Register a new membership</a>
-      </p>
     </div>
     <!-- /.login-card-body -->
   </div>
