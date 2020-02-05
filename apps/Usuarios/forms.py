@@ -15,3 +15,14 @@ class FormularioRegistroClientes(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Clientes
         fields = ('nombre', 'apellido', 'cedula','direccion', 'correo', 'telefono','roles')
+
+
+class FormularioEditarEmpleado(forms.ModelForm):
+
+    class Meta:
+        model = Empleados
+        fields = ['foto_perfil', 'first_name', 'last_name', 'email', 'roles']
+        widgets = {
+            'foto_perfil': forms.FileInput(attrs={'class': 'bootstrap4-multi-input'})
+        }
+        

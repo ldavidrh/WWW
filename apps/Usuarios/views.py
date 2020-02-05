@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
-from .forms import FormularioRegistroClientes, FormularioRegistroEmpleados
+from .forms import FormularioRegistroClientes, FormularioRegistroEmpleados, FormularioEditarEmpleado
 from django.contrib.auth import login
 from .models import Empleados, Clientes 
 
@@ -9,16 +9,6 @@ def home(request):
     
     return render(request, 'base.html', {})
 
-def login_view(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect('usuarios:home')
-    else:
-        form = AuthenticationForm()
-    return render(request, 'Usuarios/login.html', {'form': form})
 
 def CrearEmpleado(request):
     if request.method == 'POST':
@@ -42,3 +32,31 @@ def ListaEmpleado(request):
     usuarios = Empleados.objects.all()
     return render(request, 'Usuarios/ListaEmpleados.html', {'usuarios': usuarios})
 
+def EditarEmpleado(request, pk):
+    usuario = Empleados.objects.get(username=pk)
+    if request.method == 'POST':
+        form = FormularioEditarEmpleado(request.POST, request.FILES, instance=usuario)
+        
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Cuenta actualizada!')
+            return redirect('usuarios:ListaEmpleado')
+
+    else:
+        form = FormularioEditarEmpleado(instance=usuario)
+
+    return render(request, 'Usuarios/EditarEmpleado.html', {'form': form})
+
+def EliminarEmpleado(request, pk):
+    usuario = Empleados.objects.get(username=pk)
+    usuario.is_active = False
+    usuario.save()
+
+    return redirect('usuarios:ListaEmpleado')
+
+def ActivarEmpleado(request, pk):
+    usuario = Empleados.objects.get(username=pk)
+    usuario.is_active = True
+    usuario.save()
+
+    return redirect('usuarios:ListaEmpleado')
