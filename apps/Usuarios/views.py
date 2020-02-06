@@ -60,3 +60,8 @@ def ActivarEmpleado(request, pk):
     usuario.save()
 
     return redirect('usuarios:ListaEmpleado')
+
+def Perfil(request):
+    usuario = request.user 
+
+    return render(request, 'Usuarios/Perfil.html', {'usuario': usuario})
