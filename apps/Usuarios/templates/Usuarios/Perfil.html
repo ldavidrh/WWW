@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load static %}
+
+
+{% block content %}
+<h1> PERFIL </h1>
+<!--<div class="row">
+   
+    <div class="col-md-6">
+        <img src="{{ usuario.foto_perfil.url}}" height="420" width="420">
+    </div>
+    <div class="col-md-6">
+        <h3>{{usuario.first_name}} {{usuario.last_name}}</h3>
+        <h3>{{usuario.roles}}</h3>
+        <h3>{{usuario.email}}</h3>
+    </div>
+</div>
+
+<div class="card card-widget widget-user">
+      class="img-circle elevation-2"
+    <div class="widget-user-header text-white" style="background: url({% static 'dist/img/photo1.jpg' %}) center center;">
+        <h3 class="widget-user-username text-right">{{usuario.first_name}} {{usuario.last_name}}</h3>
+        <h5 class="widget-user-desc text-right">{{usuario.roles}}</h5>
+    </div>
+    <div class="widget-user-image">
+        <img class="img-circle" src="{{ usuario.foto_perfil.url}}" alt="User Avatar">
+    </div>
+    <div class="card-footer">
+        <div class="row">
+        <div class="col-sm-4 border-right">
+            <div class="description-block">
+            <h5 class="description-header">3,200</h5>
+            <span class="description-text">SALES</span>
+            </div>
+
+        </div>
+         
+        <div class="col-sm-4 border-right">
+            <div class="description-block">
+            <h5 class="description-header">13,000</h5>
+            <span class="description-text">FOLLOWERS</span>
+            </div>
+            
+        </div>
+        
+        <div class="col-sm-4">
+            <div class="description-block">
+            <h5 class="description-header">35</h5>
+            <span class="description-text">PRODUCTS</span>
+            </div>
+            
+        </div>
+       
+        </div>
+        
+    </div>
+</div>-->
+<div class="col-md-3">
+
+  
+    <div class="card card-primary card-outline">
+        <div class="card-body box-profile">
+        <div class="text-center">
+            <img class="profile-user-img img-fluid img-circle" src="{{ usuario.foto_perfil.url}}" alt="User profile picture">
+        </div>
+
+        <h3 class="profile-username text-center">{{usuario.first_name}} {{usuario.last_name}}</h3>
+
+        <p class="text-muted text-center">{{usuario.roles}}</p>
+
+        <ul class="list-group list-group-unbordered mb-3">
+            <li class="list-group-item">
+            <b>Followers</b> <a class="float-right">1,322</a>
+            </li>
+            <li class="list-group-item">
+            <b>Following</b> <a class="float-right">543</a>
+            </li>
+            <li class="list-group-item">
+            <b>Friends</b> <a class="float-right">13,287</a>
+            </li>
+        </ul>
+
+        <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+        </div>
+       
+    </div>
+    
+</div>
+{% endblock content %}

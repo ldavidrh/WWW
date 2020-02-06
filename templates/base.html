@@ -134,7 +134,7 @@
             <img src="{{ user.foto_perfil.url }}" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">{{ user.first_name }} {{ user.last_name }}</a>
+            <a href="{% url 'usuarios:Perfil' %}" class="d-block">{{ user.first_name }} {{ user.last_name }}</a>
           </div>
         </div>
       {% endif %}
@@ -244,7 +244,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">INICIO</h1>
+            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
