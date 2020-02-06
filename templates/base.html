@@ -121,9 +121,8 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{% url 'usuarios:home' %}" class="brand-link">
-      <img src="{% static 'dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">                                                                                                           
-      <span class="brand-text font-weight-light">Electrisoft</span>
+      <img src="{% static 'dist/img/logo2.png' %}" alt="AdminLTE Logo" class="brand-image elevation-3"
+           style="opacity: .8">
     </a>
 
     <!-- Sidebar -->
@@ -132,7 +131,6 @@
       {% if user.is_authenticated %}
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <a class="nav-item nav-link" href="{% url 'usuarios:logout' %}">
             <img src="{{ user.foto_perfil.url }}" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
