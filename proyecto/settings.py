@@ -109,7 +109,7 @@ DATABASES = {
         'PASSWORD': DATABASE_PASSWORD,
         'HOST': DATABASE_HOST,
         'PORT': DATABASE_PORT,
-    }
+    }   
 }
 
 
