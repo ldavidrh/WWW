@@ -59,7 +59,7 @@ INSTALLED_APPS = [
     #apps
     'apps.Usuarios',
     'apps.subestaciones',
-    'apps.transformadores'
+    'apps.transformadores',
 ]
 
 MIDDLEWARE = [

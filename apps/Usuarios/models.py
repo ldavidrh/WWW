@@ -27,7 +27,7 @@ class Empleados(AbstractUser):
 
     roles = models.CharField(
         choices = ROLES_CHOICES,
-        max_length = 15,
+        max_length = 16,
         default = OPERADORES
     )
 
@@ -47,7 +47,7 @@ class Clientes(models.Model):
 
     roles = models.CharField(
         choices = ROLES_CHOICES,
-        max_length = 15,
+        max_length = 16,
         default = CLIENTE_NATURAL
     )
         

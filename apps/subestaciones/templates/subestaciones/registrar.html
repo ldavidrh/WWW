@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="card card-primary">
+    <div class="card-header">
+      <h3 class="card-title">Registrar estacion</h3>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <form method="post">
+      <div class="card-body">
+       {% csrf_token %}   
+       {% bootstrap_form form %}
+      </div>
+      <!-- /.card-body -->
+
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary toastrDefaultSuccess">Registrar</button>
+      </div>
+    </form>
+  </div>
+  <!-- /.card -->
+{% endblock content %}
+
+{% if messagess %}
+<script type="text/javascript">
+    $(function(){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+
+        $('.toastrDefaultSuccess').click(function(){
+            toastr.success('Subestacion agregada exitosamente')
+        })
+    })
+</script>
+{% endif %}
