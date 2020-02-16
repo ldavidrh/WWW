@@ -6,10 +6,12 @@ from .form import FormularioRegistroSubestacion
 def registrar_view(request):
     if request.method == 'POST':
         form = FormularioRegistroSubestacion(request.POST)
-        if form.is_valid:
+        if form.is_valid():
             form.save(request)
-            messages.success(request, 'Estacion registrada exitosamente')
+            messages.success(request, 'Subestacion registrada exitosamente')
             return redirect('subestaciones:registrar')
+        else:
+            messages.error(request, 'Error al agregar subestacion')
     else:
         form = FormularioRegistroSubestacion()
 

@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
+{% load static %}
+
 {% block content %}
 <div class="card card-primary">
     <div class="card-header">
-      <h3 class="card-title">Registrar estacion</h3>
+      <h3 class="card-title">Registrar Subestacion</h3>
     </div>
     <!-- /.card-header -->
     <!-- form start -->
@@ -20,21 +22,24 @@
     </form>
   </div>
   <!-- /.card -->
+{% if messages %}
+  {% for message in messages %}
+    {% if message.tags == 'sucess' %}
+      <script type="text/javascript">
+        $(function(){
+          toastr.success('{{message}}');
+        });
+      </script> 
+   {% elif message.tags == 'error' %}
+    <script type="text/javascript">
+      $(function(){
+        toastr.error('{{message}}');
+      });
+    </script>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+
 {% endblock content %}
 
-{% if messagess %}
-<script type="text/javascript">
-    $(function(){
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
-        });
-
-        $('.toastrDefaultSuccess').click(function(){
-            toastr.success('Subestacion agregada exitosamente')
-        })
-    })
-</script>
-{% endif %}
