@@ -10,11 +10,11 @@ class FormularioRegistroEmpleados(UserCreationForm):
         model = Empleados
         fields = ('first_name', 'last_name', 'email', 'password1', 'password2', 'cedula', 'roles', 'foto_perfil')
 
-class FormularioRegistroClientes(UserCreationForm):
-    
+class FormularioRegistroClientes(forms.ModelForm):
+    direccion = forms.CharField(label='Dirección del domicilio') 
     class Meta(UserCreationForm.Meta):
         model = Clientes
-        fields = ('nombre', 'apellido', 'cedula','direccion', 'correo', 'telefono','roles')
+        fields = ('nombre', 'apellido', 'cedula', 'correo', 'telefono','roles')
 
 
 class FormularioEditarEmpleado(forms.ModelForm):
@@ -25,4 +25,4 @@ class FormularioEditarEmpleado(forms.ModelForm):
         widgets = {
             'foto_perfil': forms.FileInput(attrs={'class': 'bootstrap4-multi-input'})
         }
-        
+          
