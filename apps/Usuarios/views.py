@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from .forms import FormularioRegistroClientes, FormularioRegistroEmpleados, FormularioEditarEmpleado
 from django.contrib.auth import login
-from .models import Empleados, Clientes 
+from .models import Empleados, Clientes, Contrato
 
 def home(request):
     
@@ -65,3 +65,48 @@ def Perfil(request):
     usuario = request.user 
 
     return render(request, 'Usuarios/Perfil.html', {'usuario': usuario})
+
+
+def CrearCliente(request):
+    if request.method == 'POST':
+        
+        datos = request.POST
+        direccion = datos['direccion']
+        nombre = datos['nombre']
+        apellido = datos['apellido']
+        correo = datos['correo']
+        telefono = datos['telefono']
+        rol= datos['tipo']
+        cedula = datos['cedula']
+   
+        a = Clientes(roles=rol, nombre=nombre, apellido=apellido, correo=correo, cedula=cedula, telefono=telefono)
+        a.save()
+        contrato = Contrato(cliente=a, direccion=direccion)
+        contrato.save()
+        
+        messages.success(request, 'Solicitud creada exitosamente, le notificaremos cuando se haya aprobado')
+        return redirect('usuarios:home')
+    
+    return render(request, 'Usuarios/CrearCliente.html', {})
+
+def ListaSolicitudCliente(request):
+    #clientes = Clientes.objects.filter(aprobado=False).select_related('contrato')
+    clientes = Contrato.objects.filter(cliente__aprobado=False)
+    return render(request, 'Usuarios/ListaAprobar.html', {'clientes': clientes})
+
+def AceptarCliente(request,pk):
+    usuario = Clientes.objects.get(cedula=pk)
+    usuario.aprobado = True
+    usuario.save()
+
+    messages.success(request, 'Cliente aprobado!')
+    return redirect('usuarios:ListaSolicitudCliente')
+
+def RechazarCliente(request, pk):
+    usuario = Clientes.objects.get(cedula=pk)
+    contrato = Contrato.objects.get(cliente=usuario)
+    contrato.delete()
+    usuario.delete()
+
+    messages.success(request, 'Cliente rechazado!')
+    return redirect('usuarios:ListaSolicitudCliente')
