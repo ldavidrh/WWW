@@ -79,7 +79,7 @@ def CrearCliente(request):
         rol= datos['tipo']
         cedula = datos['cedula']
    
-        a = Clientes(roles=rol, nombre=nombre, apellido=apellido, correo=correo, cedula=cedula, telefono=telefono)
+        a = Clientes(first_name=nombre, last_name=apellido, tipo=rol, email=correo, cedula=cedula, telefono=telefono, username=cedula)
         a.save()
         contrato = Contrato(cliente=a, direccion=direccion)
         contrato.save()

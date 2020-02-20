@@ -12,11 +12,12 @@ class FormularioRegistroEmpleados(UserCreationForm):
 
 class FormularioRegistroClientes(forms.ModelForm):
     direccion = forms.CharField(label='Dirección del domicilio') 
+
     class Meta(UserCreationForm.Meta):
         model = Clientes
-        fields = ('nombre', 'apellido', 'cedula', 'correo', 'telefono','roles')
+        fields = ('first_name', 'last_name', 'email', 'cedula', 'tipo', 'telefono')
 
-
+    
 class FormularioEditarEmpleado(forms.ModelForm):
 
     class Meta:
