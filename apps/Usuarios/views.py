@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
-from .forms import FormularioRegistroClientes, FormularioRegistroEmpleados, FormularioEditarEmpleado
+from .forms import FormularioRegistroEmpleados, FormularioEditarEmpleado
 from django.contrib.auth import login
 from .models import Empleados, Clientes, Contrato
 
@@ -38,7 +38,13 @@ def EditarEmpleado(request, pk):
         form = FormularioEditarEmpleado(request.POST, request.FILES, instance=usuario)
         
         if form.is_valid():
-            form.save()
+            a = form.save(commit=False)
+            rol = form.cleaned_data.get('roles')
+            if rol == 'gerente' or rol == 'administrador':
+                a.is_superuser = True
+            else:
+                a.is_superuser = False
+            a.save()
             messages.success(request, 'Cuenta actualizada!')
             return redirect('usuarios:ListaEmpleado')
 
