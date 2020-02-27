@@ -94,6 +94,11 @@ def ListaSolicitudCliente(request):
     clientes = Contrato.objects.filter(cliente__aprobado=False)
     return render(request, 'Usuarios/ListaAprobar.html', {'clientes': clientes})
 
+def ListaCliente(request):
+    #clientes = Clientes.objects.filter(aprobado=False).select_related('contrato')
+    clientes = Contrato.objects.filter(cliente__aprobado=True)
+    return render(request, 'Usuarios/ListaClientes.html', {'clientes': clientes})
+
 def AceptarCliente(request,pk):
     usuario = Clientes.objects.get(cedula=pk)
     usuario.aprobado = True

@@ -78,9 +78,9 @@
               </a>
             </li>
             <li>
-              <a class="nav-item nav-link" href="{% url 'usuarios:CrearEmpleado' %}">
+              <a class="nav-item nav-link" href="{% url 'usuarios:CrearCliente' %}">
                 <i class="glyphicon glyphicon-plus"></i>
-                <span>Registrarse</span>
+                <span>Solicite nuestros servicios</span>
               </a>
             </li>
         {% endif %}
@@ -206,15 +206,34 @@
           </li>
           <li class="nav-item">
             <a href="{% url 'usuarios:ListaEmpleado' %}" class="nav-link">
-              <i class="fas fa-search"></i>
+              <i class="fas fa-user-tie"></i>
               <p>
                 Listar empleados
               </p>
             </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'usuarios:ListaSolicitudCliente' %}" class="nav-link">
+              <i class="fas fa-clipboard-list"></i>
+              <p>
+                Solicitudes
+              </p>
+            </a>
           </li>   
+          {% endif %}
+          {% if user.roles == 'operador' %}
+          <li class="nav-item">
+            <a href="{% url 'usuarios:ListaCliente' %}" class="nav-link">
+              <i class="fas fa-users"></i>
+              <p>
+                Lista Clientes
+              </p>
+            </a>
+          </li> 
           {% endif %}
         </ul>
       </nav>
+      
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
