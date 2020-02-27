@@ -16,4 +16,8 @@ __pycache__/
 ## Migrations ##
 */*/migrations/
 */migrations/
-WWW/secrets.json
+
+
+secrets.json
+
+inicial/
