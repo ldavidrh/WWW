@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from PIL import Image
@@ -33,8 +34,8 @@ def validar_entero(value):
 
 
 class Persona(AbstractUser):
-
-    cedula = models.BigIntegerField(validators=[validar_entero], verbose_name='Cédula', primary_key=True)
+    id = models.UUIDField(primary_key=True, max_length=10, editable=False, default=uuid.uuid4)
+    cedula = models.BigIntegerField(validators=[validar_entero], verbose_name='Cédula')
     email = models.EmailField(('Correo'), unique=True)
     first_name = models.CharField(validators=[validar_string], blank=True, max_length=30, verbose_name='Nombre')
     last_name = models.CharField(validators=[validar_string], blank=True, max_length=150, verbose_name='Apellido')

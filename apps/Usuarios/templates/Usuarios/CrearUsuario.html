@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
-
+{% load static %}
 
 {% block content %}
 <div class="row text-center">
@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="col-md-3">
-        <p style="color: transparent">puto el que lo lea</p>
+        <img src="{% static 'dist/img/fondo2.png' %}">
     </div>
 </div>
 {% endblock content %}
