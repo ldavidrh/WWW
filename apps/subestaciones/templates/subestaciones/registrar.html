@@ -24,7 +24,7 @@
   <!-- /.card -->
 {% if messages %}
   {% for message in messages %}
-    {% if message.tags == 'sucess' %}
+    {% if message.tags == 'success' %}
       <script type="text/javascript">
         $(function(){
           toastr.success('{{message}}');

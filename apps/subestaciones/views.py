@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .form import FormularioRegistroSubestacion
+from .models import Subestacion
 
 # Create your views here.
 def registrar_view(request):
@@ -16,3 +17,18 @@ def registrar_view(request):
         form = FormularioRegistroSubestacion()
 
     return render(request, 'subestaciones/registrar.html', {'form':form})
+
+def consultar_view(request):
+    subestaciones = Subestacion.objects.all()
+    return render(request, 'subestaciones/consultar.html', {'subestaciones':subestaciones})
+
+def eliminar_view(request, pk):
+    try:
+        Subestacion.objects.filter(id=pk).delete()
+        messages.success(request, 'Se elimino la estacion')
+        
+    except:
+        messages.error(request, 'Error al eliminar la estacion')
+
+    return redirect('subestaciones:consultar')
+    

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+      <h3 class="card-title">DataTable with minimal features & hover style</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="example2" class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
+            <th>Activo</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for subestacion in subestaciones %}
+            <tr role="row">
+                <td>{{subestacion.id}}</td>
+                <td>{{subestacion.nombre}}</td>
+                <td>{{subestacion.latitud}}</td>
+                <td>{{subestacion.longitud}}</td>
+                <td>
+                    {% if subestacion.activo == True %}
+                        Si
+                    {% else %}
+                        No
+                    {% endif %}
+                    
+                </td>
+                <td><ion-icon name="heart"></ion-icon></td>
+            </tr>
+            
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
+            <th>Activo</th>
+            <th>Acciones</th>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+{% endblock %}
