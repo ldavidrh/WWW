@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     #utils
     'rest_framework',
     'bootstrap4',
+    'leaflet',
     #apps
     'apps.Usuarios',
     'apps.subestaciones',
@@ -160,3 +161,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static_collected')
 
 LOGIN_REDIRECT_URL = 'usuarios:home'
 LOGIN_URL = 'usuarios:login'
+
+
+LEAFLET_CONFIG = {
+    'DEFAULT_CENTER': (3.4322456610496523, -76.52543039415343),
+    'DEFAULT_ZOOM': 12,
+    'MIN_ZOOM': 3,
+    'MAX_ZOOM': 18,
+    'RESET_VIEW': False
+}

@@ -4,3 +4,6 @@ class FormularioRegistroSubestacion(forms.ModelForm):
     class Meta:
         model=Subestacion
         fields=['nombre', 'latitud', 'longitud', 'activo']
+
+
+

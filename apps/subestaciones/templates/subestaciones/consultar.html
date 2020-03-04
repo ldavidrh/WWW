@@ -5,7 +5,7 @@
 {% block content %}
 <div class="card">
     <div class="card-header">
-      <h3 class="card-title">DataTable with minimal features & hover style</h3>
+      <h3 class="card-title">Subestaciones</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -35,7 +35,24 @@
                     {% endif %}
                     
                 </td>
-                <td></td>
+                <td>
+                  <div class="row">
+                   <div class="col-sm-4"> 
+                     <a href="{% url 'subestaciones:eliminar' subestacion.id %}" title="Desactivar">
+                     <button type="button" class="btn btn-danger"> 
+                      <i class="fas fa-minus-circle"></i>
+                     </button>
+                    </a>
+                   </div>
+                   <div class="col-sm-8">
+                    <a href="{% url 'subestaciones:actualizar' subestacion.id %}" title="Actualizar">
+                      <button type="button" class="btn btn-info"> 
+                       <i class="fas fa-edit"></i>
+                      </button>
+                     </a>
+                   </div>
+                  </div>
+               </td>
             </tr>
             
         {% endfor %}
