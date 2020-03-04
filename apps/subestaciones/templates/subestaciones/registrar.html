@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block content %}
+<div class="card card-primary">
+    <div class="card-header">
+      <h3 class="card-title">Registrar Subestacion</h3>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <form method="post">
+      <div class="card-body">
+       {% csrf_token %}   
+       {% bootstrap_form form %}
+      </div>
+      <!-- /.card-body -->
+
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Registrar</button>
+      </div>
+    </form>
+  </div>
+  <!-- /.card -->
+{% endblock content %}
+
