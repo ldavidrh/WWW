@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from .forms import FormularioRegistroEmpleados, FormularioEditarEmpleado
 from django.contrib.auth import login
-from .models import Empleados, Clientes, Contrato
+from .models import Empleados, Clientes, Contrato, Persona
 
 def home(request):
     
@@ -72,6 +72,10 @@ def Perfil(request):
 
     return render(request, 'Usuarios/Perfil.html', {'usuario': usuario})
 
+def OpcionesCliente(request):
+
+    return render(request, 'Usuarios/opciones.html', {})
+
 
 def CrearCliente(request):
     if request.method == 'POST':
@@ -94,6 +98,23 @@ def CrearCliente(request):
         return redirect('usuarios:home')
     
     return render(request, 'Usuarios/CrearCliente.html', {})
+
+def CrearClienteEmpleado(request):
+
+   datos = request.POST
+   direccion = datos['direccion']
+   cedula = datos['cedula']
+   telefono = datos['telefono']
+
+   empleado = Persona.objects.get(cedula=cedula)
+
+   a = Clientes(persona_ptr_id=empleado.id, tipo="persona natural", telefono=telefono)
+   a.save()
+   contrato = Contrato(cliente=a, direccion=direccion)
+   contrato.save()
+
+
+
 
 def ListaSolicitudCliente(request):
     #clientes = Clientes.objects.filter(aprobado=False).select_related('contrato')

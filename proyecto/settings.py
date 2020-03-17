@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     #apps
     'apps.Usuarios',
+    'apps.api',
 ]
 
 MIDDLEWARE = [
