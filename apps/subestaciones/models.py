@@ -6,3 +6,7 @@ class Subestacion(models.Model):
     latitud = models.DecimalField(max_digits=18, decimal_places=15)
     longitud = models.DecimalField(max_digits=18, decimal_places=15)
     activo = models.BooleanField(default=True)
+
+    def __str__(self):
+       return self.nombre
+    

@@ -22,7 +22,7 @@ def registrar_view(request):
             messages.success(request, 'Subestacion registrada exitosamente')
             return redirect('subestaciones:registrar')
         else:
-            messages.error(request, 'Error al agregar subestacion')
+            messages.error(request, 'Error al agregar subestación')
     else:
         form = FormularioRegistroSubestacion()
 
@@ -40,7 +40,7 @@ def eliminar_view(request, id):
         messages.success(request, 'La estacion se ha desactivado exitosamente')
         
     except:
-        messages.error(request, 'Error al eliminar la estacion')
+        messages.error(request, 'Error al desactivar la estacion')
 
     return redirect('subestaciones:consultar')
     
@@ -61,7 +61,6 @@ def actualizar_view(request, id):
 def map_view(request):
     subestaciones = Subestacion.objects.all()
     serializer = SubestacionSerializer(subestaciones, many=True)    
-    print(serializer.data)
     return render(request, 'subestaciones/map.html', {'subestaciones':serializer.data})
 
 
