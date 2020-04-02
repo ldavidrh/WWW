@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 {% load static %}
 <html>
+  {% load leaflet_tags %}
 <head>
+  {% leaflet_css %}
+  {% leaflet_js %}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Electrisoft | Dashboard</title>
@@ -31,6 +34,8 @@
   <link rel="stylesheet" href="{% static 'plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css' %}">
   <!-- Toastr -->
   <link rel="stylesheet" href="{% static 'plugins/toastr/toastr.min.css' %}">
+  <!--Leaflet-->
+  <link rel="stylesheet" href="{% static 'plugins/leaflet/leaflet.css' %}"
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

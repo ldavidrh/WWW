@@ -23,4 +23,5 @@ urlpatterns = [
     #path('admin/', admin.site.urls),
     path('usuarios/', include('apps.Usuarios.urls', namespace='usuarios')),
     path('', views.landing, name='landing'),
+    path('subestaciones/', include('apps.subestaciones.urls', namespace='subestaciones')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
