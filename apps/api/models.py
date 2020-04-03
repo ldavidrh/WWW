@@ -3,7 +3,7 @@ from apps.Usuarios.models import *
 
 
 class Contador(models.Model):
-    contrato = models.ForeignKey(Contrato, on_delete=models.CASCADE)
+    contrato = models.OneToOneField(Contrato, on_delete=models.CASCADE)
     modelo = models.CharField(max_length=20)
     fecha_vencimiento = models.DateField()
 

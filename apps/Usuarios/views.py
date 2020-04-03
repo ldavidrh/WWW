@@ -4,6 +4,9 @@ from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from .forms import FormularioRegistroEmpleados, FormularioEditarEmpleado
 from django.contrib.auth import login
 from .models import Empleados, Clientes, Contrato, Persona
+from apps.api.models import Contador, Consumo
+
+
 
 def home(request):
     
@@ -99,27 +102,30 @@ def CrearCliente(request):
     
     return render(request, 'Usuarios/CrearCliente.html', {})
 
-def CrearClienteEmpleado(request):
+def ClienteAntiguo(request):
+    if request.method == 'POST':
+        
+        datos = request.POST
+        direccion = datos['direccion']
+        cedula = datos['cedula']
 
-   datos = request.POST
-   direccion = datos['direccion']
-   cedula = datos['cedula']
-   telefono = datos['telefono']
+        cliente = Clientes.objects.get(cedula=cedula)
 
-   empleado = Persona.objects.get(cedula=cedula)
+        contrato = Contrato(cliente=cliente, direccion=direccion, en_servicio=False)
+        contrato.save()
 
-   a = Clientes(persona_ptr_id=empleado.id, tipo="persona natural", telefono=telefono)
-   a.save()
-   contrato = Contrato(cliente=a, direccion=direccion)
-   contrato.save()
-
-
-
+        messages.success(request, 'Solicitud creada exitosamente, le notificaremos cuando se haya aprobado')
+        return redirect('usuarios:home')
 
 def ListaSolicitudCliente(request):
     #clientes = Clientes.objects.filter(aprobado=False).select_related('contrato')
     clientes = Contrato.objects.filter(cliente__aprobado=False)
     return render(request, 'Usuarios/ListaAprobar.html', {'clientes': clientes})
+
+def ListaSolicitudClienteA(request):
+    
+    clientes = Contrato.objects.filter(en_servicio=False)
+    return render(request, 'Usuarios/ListaAprobarA.html', {'clientes': clientes})
 
 def ListaCliente(request):
     #clientes = Clientes.objects.filter(aprobado=False).select_related('contrato')
@@ -128,11 +134,25 @@ def ListaCliente(request):
 
 def AceptarCliente(request,pk):
     usuario = Clientes.objects.get(cedula=pk)
+    contrato = Contrato.objects.get(cliente=usuario)
     usuario.aprobado = True
     usuario.save()
+    contador = Contador(contrato=contrato, modelo="uno x ahi", fecha_vencimiento='2040-03-03')
+    contador.save()
 
     messages.success(request, 'Cliente aprobado!')
     return redirect('usuarios:ListaSolicitudCliente')
+
+def AceptarClienteA(request,pk):
+    contrato = Contrato.objects.get(id=pk)
+    contrato.en_servicio=True
+    contrato.save()
+
+    contador = Contador(contrato=contrato, modelo="uno x ahi", fecha_vencimiento='2040-03-03')
+    contador.save()
+
+    messages.success(request, 'Cliente aprobado!')
+    return redirect('usuarios:ListaSolicitudClienteA')
 
 def RechazarCliente(request, pk):
     usuario = Clientes.objects.get(cedula=pk)
@@ -142,3 +162,10 @@ def RechazarCliente(request, pk):
 
     messages.success(request, 'Cliente rechazado!')
     return redirect('usuarios:ListaSolicitudCliente')
+
+def RechazarClienteA(request, pk):
+    contrato = Contrato.objects.get(id=pk)
+    contrato.delete()
+
+    messages.success(request, 'Cliente aprobado!')
+    return redirect('usuarios:ListaSolicitudClienteA')
