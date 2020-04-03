@@ -8,5 +8,4 @@ urlpatterns=[
     path('consultar/', consultar_view, name='consultar'),
     path('eliminar/<int:id>', eliminar_view, name='eliminar'),
     path('actualizar/<int:id>', actualizar_view, name='actualizar'),
-    path('mapa/', map_view, name='mapa')
 ]
