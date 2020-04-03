@@ -214,12 +214,26 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{% url 'usuarios:ListaSolicitudCliente' %}" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="fas fa-clipboard-list"></i>
               <p>
                 Solicitudes
               </p>
             </a>
+            <ul class="nav nav-treeview" style="display: block;">
+              <li class="nav-item">
+                <a href="{% url 'usuarios:ListaSolicitudCliente' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Clientes nuevos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'usuarios:ListaSolicitudClienteA' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Clientes antiguos</p>
+                </a>
+              </li>  
+            </ul>
           </li>   
           {% endif %}
           {% if user.roles == 'operador' %}
