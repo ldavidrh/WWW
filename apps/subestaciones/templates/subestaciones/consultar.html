@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load bootstrap4 %}
+{% load leaflet_tags %}
 
 {% block content %}
-<div class="card">
+<div class="card card-primary leaflet-container">
     <div class="card-header">
       <h3 class="card-title">Subestaciones</h3>
     </div>
-    <!-- /.card-header -->
+      <!-- /.card-header -->
+
+      {% leaflet_map "mimapa" callback="window.map_init_basic" %}
+
     <div class="card-body">
       <table id="example2" class="table table-bordered table-hover">
         <thead>
@@ -73,3 +77,29 @@
   </div>
   <!-- /.card -->
 {% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+    function map_init_basic (map, options) {
+        {% for subestacion in jsonsubestaciones %}
+            L.marker(['{{subestacion.latitud}}', '{{subestacion.longitud}}']).addTo(map).bindPopup('Nombre: {{subestacion.nombre}}, Activa: {{subestacion.activo}}');
+        {% endfor %}
+    }
+</script>
+
+<style>
+    .leaflet-container {  /* all maps */
+        width:  1000px;
+    }
+
+    #specialbigmap {
+        height: 800px;
+    }
+
+    /* Resize the "display_raw" textbox */
+    .django-leaflet-raw-textarea {
+        width: 100%;
+    }
+</style>
+
+{% endblock js %}
