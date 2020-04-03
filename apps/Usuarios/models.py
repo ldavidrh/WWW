@@ -72,6 +72,7 @@ class Clientes(Persona):
     telefono = models.BigIntegerField(validators=[validar_entero], null=False)
     aprobado = models.BooleanField(default=False)
 
+    
 class Contrato(models.Model):
     cliente = models.ForeignKey(Clientes, on_delete=models.PROTECT)
     direccion = models.CharField(max_length=20, null=False, unique=True)

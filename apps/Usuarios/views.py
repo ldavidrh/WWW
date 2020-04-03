@@ -9,9 +9,11 @@ from apps.api.models import Contador, Consumo
 
 
 def home(request):
-    
+
     return render(request, 'base.html', {})
 
+def landing(request):
+    return render(request, 'landing.html', {})
 
 def CrearEmpleado(request):
     if request.method == 'POST':
@@ -98,7 +100,7 @@ def CrearCliente(request):
         contrato.save()
         
         messages.success(request, 'Solicitud creada exitosamente, le notificaremos cuando se haya aprobado')
-        return redirect('usuarios:home')
+        return redirect('landing')
     
     return render(request, 'Usuarios/CrearCliente.html', {})
 
