@@ -7,4 +7,5 @@ app_name = 'api'
 urlpatterns = [
     path('crear_consumo/<int:pk>/', views.CrearConsumo.as_view(), name='crear_consumo'),
     path('consumos/', views.ListaConsumo.as_view(), name='consumos'),
+    path('consumos/<int:pk>/', views.ListaConsumoCliente.as_view(), name='consumosCliente'),
 ]

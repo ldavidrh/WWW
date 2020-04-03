@@ -18,6 +18,14 @@ class ListaConsumo(APIView):
         serializer = ConsumoSerializer(consumos, many=True)
         return Response(serializer.data)
 
+class ListaConsumoCliente(APIView):
+
+    def get(self, request, *args, **kwargs):
+        id = kwargs.get('pk')
+        consumos = Consumo.objects.filter(contador__contrato__cliente__cedula=id)
+        serializer = ConsumoSerializer(consumos, many=True)
+        return Response(serializer.data)
+
 
 class CrearConsumo(APIView):
 
