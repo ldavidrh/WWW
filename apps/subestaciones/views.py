@@ -22,7 +22,7 @@ def registrar_view(request):
             messages.success(request, 'Subestacion registrada exitosamente')
             return redirect('subestaciones:registrar')
         else:
-            messages.error(request, 'Error al agregar subestacion')
+            messages.error(request, 'Error al agregar subestación')
     else:
         form = FormularioRegistroSubestacion()
 
@@ -30,17 +30,18 @@ def registrar_view(request):
 
 def consultar_view(request):
     subestaciones = Subestacion.objects.all()
-    return render(request, 'subestaciones/consultar.html', {'subestaciones':subestaciones})
+    serializer = SubestacionSerializer(subestaciones, many=True)
+    return render(request, 'subestaciones/consultar.html', {'subestaciones':subestaciones, "jsonsubestaciones":serializer.data})
 
 def eliminar_view(request, id):
     try:
         subestacion = Subestacion.objects.get(pk=id)
         subestacion.activo = False
         subestacion.save()
-        messages.success(request, 'La estacion se ha desactivado exitosamente')
+        messages.success(request, 'La subestacion se ha desactivado exitosamente')
         
     except:
-        messages.error(request, 'Error al eliminar la estacion')
+        messages.error(request, 'Error al desactivar la subestacion')
 
     return redirect('subestaciones:consultar')
     
@@ -52,17 +53,13 @@ def actualizar_view(request, id):
             form.save()
             messages.success(request, "Subestacion actualizada exitosamente")
             return redirect('subestaciones:consultar')
+        else:
+            messages.error(request, "Error al actualizar subestacion")
     else:
         form = FormularioRegistroSubestacion()
-    
-    return render(request, 'subestaciones/actualizar.html', {'form':form})
-
-
-def map_view(request):
-    subestaciones = Subestacion.objects.all()
-    serializer = SubestacionSerializer(subestaciones, many=True)    
+    serializer = SubestacionSerializer(subestacion)
     print(serializer.data)
-    return render(request, 'subestaciones/map.html', {'subestaciones':serializer.data})
+    return render(request, 'subestaciones/actualizar.html', {'form':form, 'subestacion':serializer.data})
 
 
 
