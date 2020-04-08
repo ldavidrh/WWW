@@ -13,7 +13,7 @@ $ sudo apt install postgresql postgresql-contrib pgadmin3
 #### Depedencia de psycopg2 
 
 ```sh
-$ sudo apt install libpq-dev
+$ sudo apt install libpq-dev python3-dev build-essential
 ```
 
 #### Ambiente virtual de trabajo
@@ -21,10 +21,10 @@ $ sudo apt install libpq-dev
 Se recomienda hacer uso de ambiente virtuales de python para el proyecto, en caso de no tener instalado ***virtualenv*** hacer lo siguiente:
 
 ```sh
-$ sudo apt install virtualenv python3-virtualenv
+$ sudo apt install virtualenv
 ```
 
-Luego para crear su ambiente virtual:
+Luego para crear su ambiente virtual IMPORTANTE especificar que la version de python del ambiente sea la tercera:
 
 ```sh
 $ virtualenv nombre_del_ambiente -p python3
