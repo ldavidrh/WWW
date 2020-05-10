@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load recaptcha2 %}
 <html>
   {% load leaflet_tags %}
 <head>
@@ -31,7 +32,7 @@
   <!-- Toastr -->
   <link rel="stylesheet" href="{% static 'plugins/toastr/toastr.min.css' %}">
   <!--Leaflet-->
-  <link rel="stylesheet" href="{% static 'plugins/leaflet/leaflet.css' %}"
+  <link rel="stylesheet" href="{% static 'plugins/leaflet/leaflet.css' %}">
   {% block css %}{% endblock css %}
   
 </head>
@@ -338,7 +339,8 @@
 <script src="{% static 'plugins/sweetalert2/sweetalert2.min.js' %}"></script>
 <!-- Toastr -->
 <script src="{% static 'plugins/toastr/toastr.min.js' %}"></script>
-
+<!-- reCAPTCHA -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {% block js %}
        
 {% endblock %}
