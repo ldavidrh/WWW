@@ -3,15 +3,11 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from .forms import FormularioRegistroEmpleados, FormularioEditarEmpleado
 from django.contrib.auth import login
-<<<<<<< HEAD
-from .models import Empleados, Clientes, Contrato
 import requests, json
-=======
 from .models import Empleados, Clientes, Contrato, Persona
 from apps.api.models import Contador, Consumo
 
 
->>>>>>> dev
 
 def home(request):
 
