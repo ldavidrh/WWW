@@ -44,9 +44,7 @@
             document.getElementById("id_latitud").value = position.lat;
             document.getElementById("id_longitud").value = position.lng;
         })
-
-       
-
+        
         marker.addTo(map);
     }
 
@@ -58,6 +56,8 @@
     .leaflet-container {  /* all maps */
         width:  1000px;
         height: 800px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     #specialbigmap {
