@@ -1,79 +1,104 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <title>Electrisoft</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1"> 
-        <link rel="stylesheet" href="static/dist/css/fontello.css">
-        <link rel="stylesheet" href="static/dist/css/estilos.css">
-    </head>
 
-    <body>
-        <header>
+<head>
+    <title>Electrisoft</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <link rel="stylesheet" href="static/dist/css/fontello.css">
+    <link rel="stylesheet" href="static/dist/css/estilos.css">
+</head>
+
+<body>
+    <header>
+        <div class="contenedor">
+            <h1 class="icon-flash">Electrisoft</h1>
+            <input type="checkbox" , id="menu-bar">
+            <label class="icon-menu" for="menu-bar"></label>
+            <nav class="menu">
+                <a href="{% url 'usuarios:login' %}">Ingresar</a>
+                <a href="{% url 'usuarios:CrearCliente' %}">Solicitar servicio</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="banner">
+            <img src="static/dist/img/baner.jpg">
             <div class="contenedor">
-                <h1 class="icon-flash">Electrisoft</h1>
-                <input type="checkbox", id="menu-bar">
-                <label class="icon-menu" for="menu-bar"></label>
-                <nav class="menu">
-                    <a href="{% url 'usuarios:login' %}">Ingresar</a>
-                    <a href="{% url 'usuarios:CrearCliente' %}">Solicitar servicio</a>
-                </nav>
+                <h2>El mejor servicio de la ciudad</h2>
+                <p>Trabajamos para mejorar el pais</p>
+                <a href="#">Consulte su factura aqui</a>
             </div>
-        </header>
+        </section>
 
-        <main>
-            <section id="banner">
-                <img src="static/dist/img/baner.jpg">
-                <div class="contenedor">
-                    <h2>El mejor servicio de la ciudad</h2>
-                    <p>Trabajamos para mejorar el pais</p>
-                    <a href="#">Consulte su factura aqui</a>
-                </div>
-            </section>
+        <section id="Bienvenidos">
+            <h2>Bienvenidos a Electrisoft</h2>
+            <p>Somos la empresa que le da energia a tu vida</p>
+        </section>
 
-            <section id="Bienvenidos">
-                <h2>Bienvenidos a Electrisoft</h2>
-                <p>Somos la empresa que le da energia a tu vida</p>
-            </section>
-
-            <section id="blog">
-                <h3>Lo último de nuestra empresa</h3>
-                <div class="contenedor">
-                    <article>
-                        <img src="static/dist/img/objetivos.jpg">
-                        <h4>Objetivos</h4>
-                    </article>
-                    <article>
-                        <img src="static/dist/img/servicio.jpg">
-                        <h4>Cero fallas</h4>
-                    </article>
-                </div>
-            </section>
-
-            <section id="info">
-                <h3>Servicios</h3>
-                <div class="contenedor">
-                    <div class="info-serv">
-                        <img src="static/dist/img/dudas.jpg" >
-                        <h4>Preguntas frecuentes</h4>
-                    </div>
-                    <div class="info-serv">
-                        <img src="static/dist/img/servicio tecnico.jpg">
-                        <h4>Servicio tecnico</h4>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer>
+        <section id="blog">
+            <h3>Lo último de nuestra empresa</h3>
             <div class="contenedor">
-                <p class="copy">Electrisoft &copy; 2020</p>
-                <div class="sociales">
-                    <a class="icon-mail-alt" href="#"></a>
-                    <a class="icon-facebook-rect" href="#"></a>
-                    <a class="icon-instagram" href="#"></a>
+                <article>
+                    <img src="static/dist/img/objetivos.jpg">
+                    <h4>Objetivos</h4>
+                </article>
+                <article>
+                    <img src="static/dist/img/servicio.jpg">
+                    <h4>Cero fallas</h4>
+                </article>
+            </div>
+        </section>
+
+        <section id="info">
+            <h3>Servicios</h3>
+            <div class="contenedor">
+                <div class="info-serv">
+                    <img src="static/dist/img/dudas.jpg">
+                    <h4>Preguntas frecuentes</h4>
+                </div>
+                <div class="info-serv">
+                    <img src="static/dist/img/servicio tecnico.jpg">
+                    <h4>Servicio tecnico</h4>
                 </div>
             </div>
-        </footer>
-    </body>
+        </section>
+    </main>
+
+    <footer>
+        <div class="contenedor">
+            <p class="copy">Electrisoft &copy; 2020</p>
+            <div class="sociales">
+                <a class="icon-mail-alt" href="#"></a>
+                <a class="icon-facebook-rect" href="#"></a>
+                <a class="icon-instagram" href="#"></a>
+            </div>
+        </div>
+    </footer>
+    {% if messages %}
+    {% for message in messages %}
+
+    <script type="text/javascript">
+        $(function () {
+            var mensaje = '{{message | safe}}';
+            if (mensaje != null) {
+
+                Swal.fire({
+                    toast: true,
+                    type: 'success',
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    text: mensaje
+                });
+            }
+        })
+    </script>
+    {% endfor %}
+    {% endif %}
+
+</body>
+
 </html>

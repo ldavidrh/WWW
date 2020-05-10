@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load recaptcha2 %}
 <html>
   {% load leaflet_tags %}
 <head>
@@ -35,7 +36,9 @@
   <!-- Toastr -->
   <link rel="stylesheet" href="{% static 'plugins/toastr/toastr.min.css' %}">
   <!--Leaflet-->
-  <link rel="stylesheet" href="{% static 'plugins/leaflet/leaflet.css' %}"
+  <link rel="stylesheet" href="{% static 'plugins/leaflet/leaflet.css' %}">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  {% recaptcha_explicit_support %}
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -317,6 +320,9 @@
 <script src="{% static 'dist/js/pages/dashboard.js' %}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{% static 'dist/js/demo.js' %}"></script>
+<!-- reCAPTCHA -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 {% block js %}
        
 {% endblock %}

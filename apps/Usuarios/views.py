@@ -4,6 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from .forms import FormularioRegistroEmpleados, FormularioEditarEmpleado
 from django.contrib.auth import login
 from .models import Empleados, Clientes, Contrato
+import requests, json
 
 def home(request):
 
@@ -86,15 +87,30 @@ def CrearCliente(request):
         telefono = datos['telefono']
         rol= datos['tipo']
         cedula = datos['cedula']
-   
-        a = Clientes(first_name=nombre, last_name=apellido, tipo=rol, email=correo, cedula=cedula, telefono=telefono, username=cedula)
-        a.save()
-        contrato = Contrato(cliente=a, direccion=direccion)
-        contrato.save()
-        
-        messages.success(request, 'Solicitud creada exitosamente, le notificaremos cuando se haya aprobado')
-        return redirect('landing')
-    
+
+        #reCAPTCHA
+        clientkey = request.POST['g-recaptcha-response']
+        secretkey = '6Lf_6_QUAAAAAB8T3OWQWpsUUIGAJEEXzRYVGA1e'
+        captchaData = {
+            'secret' : secretkey,
+            'response' : clientkey
+        }
+
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data = captchaData)
+        response = json.loads(r.text)
+        verify = response['success']
+
+        if verify:
+            messages.success(request, 'Solicitud creada exitosamente, le notificaremos cuando se haya aprobado')
+            a = Clientes(first_name=nombre, last_name=apellido, tipo=rol, email=correo, cedula=cedula, telefono=telefono, username=cedula)
+            a.save()
+            contrato = Contrato(cliente=a, direccion=direccion)
+            contrato.save()
+            return redirect('landing')
+        else:
+            messages.warning(request, 'Por favor verifique el CAPTCHA')
+            return render(request, 'Usuarios/CrearCliente.html', {})
+
     return render(request, 'Usuarios/CrearCliente.html', {})
 
 def ListaSolicitudCliente(request):

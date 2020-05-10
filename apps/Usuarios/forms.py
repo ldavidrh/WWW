@@ -2,9 +2,12 @@
 from django import forms
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
+from snowpenguin.django.recaptcha2.fields import ReCaptchaField
+from snowpenguin.django.recaptcha2.widgets import ReCaptchaWidget
 
 
 class FormularioRegistroEmpleados(UserCreationForm):
+    captcha = ReCaptchaField(widget=ReCaptchaWidget())
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["password1"].help_text = ""
