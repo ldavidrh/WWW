@@ -73,11 +73,14 @@ class Clientes(Persona):
     aprobado = models.BooleanField(default=False)
 
     
+estratos=(('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6'))
+
 class Contrato(models.Model):
     cliente = models.ForeignKey(Clientes, on_delete=models.PROTECT)
     direccion = models.CharField(max_length=20, null=False, unique=True)
     fecha_inicio = models.DateField(auto_now=True)
     en_servicio = models.BooleanField(default=True)
+    estrato = models.CharField(('Estrato'), choices = estratos, max_length = 2)
 
 
 

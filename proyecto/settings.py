@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'apps.api',
     'apps.subestaciones',
     'apps.transformadores',
+    'apps.facturas',
 ]
 
 MIDDLEWARE = [
