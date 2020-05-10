@@ -44,12 +44,6 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'Usuarios.Empleados'
 
-# reCAPTCHA
-
-RECAPTCHA_PRIVATE_KEY = '6Le6m-gUAAAAAK3wBynicrFO4VbN_QpYMUE8ipcJ'
-
-RECAPTCHA_PUBLIC_KEY = '6Le6m-gUAAAAAOfGQwCIUnNuZtx1iAqotkWOxHYk'
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -63,7 +57,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'bootstrap4',
     'leaflet',
-    'snowpenguin.django.recaptcha2',
     #apps
     'apps.Usuarios',
     'apps.api',
