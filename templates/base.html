@@ -348,11 +348,12 @@
     <script type="text/javascript">
       $(function() {
         var mensaje = '{{message | safe}}';
+        var tags = '{{ message.tags | safe }}'
+        console.log(tags)
         if(mensaje!=null){
-
           Swal.fire({
             toast: true,
-            type: 'success',
+            type: tags,
             position: 'top-end',
             showConfirmButton: false,
             timer: 3000,
