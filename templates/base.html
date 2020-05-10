@@ -139,7 +139,7 @@
       {% if user.is_authenticated %}
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="{{ user.foto_perfil.url }}" class="img-circle elevation-2" alt="User Image">
+            <img src="{{ user.foto_perfil.url }}" class="img-circle elevation-1" alt="User Image">
           </div>
           <div class="info">
             <a href="{% url 'usuarios:Perfil' %}" class="d-block">{{ user.first_name }} {{ user.last_name }}</a>
