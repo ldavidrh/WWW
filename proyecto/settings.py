@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'leaflet',
     #apps
     'apps.Usuarios',
+    'apps.api',
     'apps.subestaciones',
     'apps.transformadores',
 ]

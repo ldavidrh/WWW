@@ -34,8 +34,8 @@ def validar_entero(value):
 
 
 class Persona(AbstractUser):
-    id = models.UUIDField(primary_key=True, max_length=10, editable=False, default=uuid.uuid4)
-    cedula = models.BigIntegerField(validators=[validar_entero], verbose_name='Cédula')
+    id =  models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
+    cedula = models.BigIntegerField(validators=[validar_entero], verbose_name='Cédula', unique=True)
     email = models.EmailField(('Correo'), unique=True)
     first_name = models.CharField(validators=[validar_string], blank=True, max_length=30, verbose_name='Nombre')
     last_name = models.CharField(validators=[validar_string], blank=True, max_length=150, verbose_name='Apellido')
@@ -78,6 +78,7 @@ class Contrato(models.Model):
     direccion = models.CharField(max_length=20, null=False, unique=True)
     fecha_inicio = models.DateField(auto_now=True)
     en_servicio = models.BooleanField(default=True)
+
 
 
 
