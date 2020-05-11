@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load leaflet_tags %}
+
+{% block content %}
+<div class="card card-primary leaflet-container">
+    <div class="card-header">
+      <h3 class="card-title">Registrar subestacion</h3>
+    </div>
+    <!-- /.card-header -->
+    {% leaflet_map "mimapa" callback="window.map_init_basic" %}
+    <div>
+        <form method="post">
+            <div class="card-body">
+             {% csrf_token %}   
+             {% bootstrap_form form %}
+            </div>
+            <!-- /.card-body -->
+      
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">Registrar</button>
+            </div>
+          </form>
+    </div>
+  </div>
+  <!-- /.card -->
+{% endblock content %}
+
+{% block js %}
+<script type="text/javascript">
+    function map_init_basic (map, options) {
+        /*{% for subestacion in subestaciones %}
+            L.marker(['{{subestacion.latitud}}', '{{subestacion.longitud}}']).addTo(map).bindPopup('Nombre: {{subestacion.nombre}}, Activa: {{subestacion.activo}}');
+        {% endfor %}*/
+
+        let defaultLocation = [3.433917, -76.527433]
+        var marker = new L.marker(defaultLocation, {draggable: 'true'})
+
+        marker.on('dragend', function(evt){
+            var position = marker.getLatLng();
+            marker.setLatLng(position, {
+                draggable: 'true'
+            });
+            document.getElementById("id_latitud").value = position.lat;
+            document.getElementById("id_longitud").value = position.lng;
+        })
+        
+        marker.addTo(map);
+    }
+
+
+</script>
+
+<style>
+
+    .leaflet-container {  /* all maps */
+        width:  1000px;
+        height: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #specialbigmap {
+        height: 800px;
+    }
+
+    /* Resize the "display_raw" textbox */
+    .django-leaflet-raw-textarea {
+        width: 100%;
+    }
+
+</style>
+
+
+{% endblock js %}
+

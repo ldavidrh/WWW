@@ -3,12 +3,18 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from .forms import FormularioRegistroEmpleados, FormularioEditarEmpleado
 from django.contrib.auth import login
-from .models import Empleados, Clientes, Contrato
+import requests, json
+from .models import Empleados, Clientes, Contrato, Persona
+from apps.api.models import Contador, Consumo
+
+
 
 def home(request):
-    
+
     return render(request, 'base.html', {})
 
+def landing(request):
+    return render(request, 'landing.html', {})
 
 def CrearEmpleado(request):
     if request.method == 'POST':
@@ -72,6 +78,10 @@ def Perfil(request):
 
     return render(request, 'Usuarios/Perfil.html', {'usuario': usuario})
 
+def OpcionesCliente(request):
+
+    return render(request, 'Usuarios/opciones.html', {})
+
 
 def CrearCliente(request):
     if request.method == 'POST':
@@ -84,21 +94,56 @@ def CrearCliente(request):
         telefono = datos['telefono']
         rol= datos['tipo']
         cedula = datos['cedula']
-   
-        a = Clientes(first_name=nombre, last_name=apellido, tipo=rol, email=correo, cedula=cedula, telefono=telefono, username=cedula)
-        a.save()
-        contrato = Contrato(cliente=a, direccion=direccion)
-        contrato.save()
+
+        #reCAPTCHA
+        clientkey = request.POST['g-recaptcha-response']
+        secretkey = '6Lf_6_QUAAAAAB8T3OWQWpsUUIGAJEEXzRYVGA1e'
+        captchaData = {
+            'secret' : secretkey,
+            'response' : clientkey
+        }
+
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data = captchaData)
+        response = json.loads(r.text)
+        verify = response['success']
+
+        if verify:
+            messages.success(request, 'Solicitud creada exitosamente, le notificaremos cuando se haya aprobado')
+            a = Clientes(first_name=nombre, last_name=apellido, tipo=rol, email=correo, cedula=cedula, telefono=telefono, username=cedula)
+            a.save()
+            contrato = Contrato(cliente=a, direccion=direccion)
+            contrato.save()
+            return redirect('landing')
+        else:
+            messages.warning(request, 'Por favor verifique el CAPTCHA')
+            return render(request, 'Usuarios/CrearCliente.html', {})
+
+    return render(request, 'Usuarios/CrearCliente.html', {})
+
+def ClienteAntiguo(request):
+    if request.method == 'POST':
         
+        datos = request.POST
+        direccion = datos['direccion']
+        cedula = datos['cedula']
+
+        cliente = Clientes.objects.get(cedula=cedula)
+
+        contrato = Contrato(cliente=cliente, direccion=direccion, en_servicio=False)
+        contrato.save()
+
         messages.success(request, 'Solicitud creada exitosamente, le notificaremos cuando se haya aprobado')
         return redirect('usuarios:home')
-    
-    return render(request, 'Usuarios/CrearCliente.html', {})
 
 def ListaSolicitudCliente(request):
     #clientes = Clientes.objects.filter(aprobado=False).select_related('contrato')
     clientes = Contrato.objects.filter(cliente__aprobado=False)
     return render(request, 'Usuarios/ListaAprobar.html', {'clientes': clientes})
+
+def ListaSolicitudClienteA(request):
+    
+    clientes = Contrato.objects.filter(en_servicio=False)
+    return render(request, 'Usuarios/ListaAprobarA.html', {'clientes': clientes})
 
 def ListaCliente(request):
     #clientes = Clientes.objects.filter(aprobado=False).select_related('contrato')
@@ -107,11 +152,25 @@ def ListaCliente(request):
 
 def AceptarCliente(request,pk):
     usuario = Clientes.objects.get(cedula=pk)
+    contrato = Contrato.objects.get(cliente=usuario)
     usuario.aprobado = True
     usuario.save()
+    contador = Contador(contrato=contrato, modelo="uno x ahi", fecha_vencimiento='2040-03-03')
+    contador.save()
 
     messages.success(request, 'Cliente aprobado!')
     return redirect('usuarios:ListaSolicitudCliente')
+
+def AceptarClienteA(request,pk):
+    contrato = Contrato.objects.get(id=pk)
+    contrato.en_servicio=True
+    contrato.save()
+
+    contador = Contador(contrato=contrato, modelo="uno x ahi", fecha_vencimiento='2040-03-03')
+    contador.save()
+
+    messages.success(request, 'Cliente aprobado!')
+    return redirect('usuarios:ListaSolicitudClienteA')
 
 def RechazarCliente(request, pk):
     usuario = Clientes.objects.get(cedula=pk)
@@ -121,3 +180,10 @@ def RechazarCliente(request, pk):
 
     messages.success(request, 'Cliente rechazado!')
     return redirect('usuarios:ListaSolicitudCliente')
+
+def RechazarClienteA(request, pk):
+    contrato = Contrato.objects.get(id=pk)
+    contrato.delete()
+
+    messages.success(request, 'Cliente aprobado!')
+    return redirect('usuarios:ListaSolicitudClienteA')
