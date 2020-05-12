@@ -58,7 +58,6 @@ def actualizar_view(request, id):
     else:
         form = FormularioRegistroSubestacion()
     serializer = SubestacionSerializer(subestacion)
-    print(serializer.data)
     return render(request, 'subestaciones/actualizar.html', {'form':form, 'subestacion':serializer.data})
 
 

@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% load leaflet_tags %}
+
+{% block content %}
+<div class="card card-primary leaflet-container">
+  <div class="card-header">
+    <h3 class="card-title">Transformadores</h3>
+  </div>
+  <!-- /.card-header -->
+
+  {% leaflet_map "mimapa" callback="window.map_init_basic" %}
+
+  <div class="card-body">
+    <table id="example2" class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Serial</th>
+          <th>Latitud</th>
+          <th>Longitud</th>
+          <th>Devanado</th>
+          <th>Subestacion</th>
+          <th>Activo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for transformador in transformadores %}
+        <tr role="row">
+          <td>{{transformador.serial}}</td>
+          <td>{{transformador.latitud}}</td>
+          <td>{{transformador.longitud}}</td>
+          <td>{{transformador.devanado}}</td>
+          <td>{{transformador.subestacion}}</td>
+          <td>
+            {% if transformador.activo == True %}
+              Si
+            {% else %}
+              No
+            {% endif %}
+          </td>
+          <td>
+            <div class="row">
+              <div class="col-sm-4">
+                <a href="{% url 'transformadores:eliminar' transformador.serial %}" title="Desactivar">
+                  <button type="button" class="btn btn-danger">
+                    <i class="fas fa-minus-circle"></i>
+                  </button>
+                </a>
+              </div>
+              <div class="col-sm-8">
+                <a href="{% url 'transformadores:actualizar' transformador.serial %}" title="Actualizar">
+                  <button type="button" class="btn btn-info">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                </a>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>Serial</th>
+          <th>Latitud</th>
+          <th>Longitud</th>
+          <th>Devanado</th>
+          <th>Subestacion</th>
+          <th>Activo</th>
+          <th>Acciones</th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <!-- /.card-body -->
+</div>
+<!-- /.card -->
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+  var listtransformadores = {{jsontransformadores | safe}}
+  console.log(listtransformadores)
+  function map_init_basic(map, options) {
+    for(transformador of listtransformadores){
+      if(transformador.fields['latitud'] != null || transformador.fields['longitud'] != null){
+        
+        L.marker([transformador.fields['latitud'], transformador.fields['longitud']]).addTo(map).bindPopup('Serial: ' + transformador['pk'])
+      }
+    }
+  }
+</script>
+
+<style>
+  .leaflet-container {
+      /* all maps */
+      width: 1000px;
+      height: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+
+  #specialbigmap {
+      height: 800px;
+  }
+
+  /* Resize the "display_raw" textbox */
+  .django-leaflet-raw-textarea {
+      width: 100%;
+  }
+</style>
+{% endblock js %}
+
+

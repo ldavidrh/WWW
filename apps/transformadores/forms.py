@@ -4,4 +4,9 @@ from .models import Transformador
 class FormularioRegistroTransformador(forms.ModelForm):
     class Meta:
         model=Transformador
-        exclude=('id',)
+        fields = '__all__'
+
+class FormularioActualizacionTransformador(forms.ModelForm):
+    class Meta:
+        model=Transformador
+        exclude = ('serial', 'devanado')

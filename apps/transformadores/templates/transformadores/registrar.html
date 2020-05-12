@@ -29,9 +29,6 @@
 {% block js %}
 <script type="text/javascript">
     function map_init_basic(map, options) {
-        /*{% for subestacion in subestaciones %}
-            L.marker(['{{subestacion.latitud}}', '{{subestacion.longitud}}']).addTo(map).bindPopup('Nombre: {{subestacion.nombre}}, Activa: {{subestacion.activo}}');
-        {% endfor %}*/
         let defaultLocation = [3.433917, -76.527433]
         var marker = new L.marker(defaultLocation, { draggable: 'true' })
 
@@ -73,6 +70,7 @@
 
 </script>
 
+
 <style>
     .leaflet-container {
         /* all maps */
@@ -91,6 +89,5 @@
         width: 100%;
     }
 </style>
-
 
 {% endblock js %}
