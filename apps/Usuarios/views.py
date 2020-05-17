@@ -92,11 +92,12 @@ def CrearCliente(request):
         correo = datos['correo']
         telefono = datos['telefono']
         rol= datos['tipo']
+        estrato= datos['estrato']
         cedula = datos['cedula']
    
         a = Clientes(first_name=nombre, last_name=apellido, tipo=rol, email=correo, cedula=cedula, telefono=telefono, username=cedula)
         a.save()
-        contrato = Contrato(cliente=a, direccion=direccion)
+        contrato = Contrato(cliente=a, direccion=direccion, estrato=estrato)
         contrato.save()
         
         messages.success(request, 'Solicitud creada exitosamente, le notificaremos cuando se haya aprobado')
