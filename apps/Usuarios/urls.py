@@ -21,6 +21,6 @@ urlpatterns = [
     path('rechazar_cliente/<int:pk>/', views.RechazarCliente, name='RechazarCliente'),
     path('rechazar_clienteA/<int:pk>/', views.RechazarClienteA, name='RechazarClienteA'),
     path('lista_clintes/', views.ListaCliente, name='ListaCliente'),
-    path('login/', auth_views.LoginView.as_view(template_name='Usuarios/login.html'), name='login'),
+    path('login/', auth_views.LoginView.as_view(template_name='Usuarios/login2.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='Usuarios/logout.html'), name='logout'),
 ]

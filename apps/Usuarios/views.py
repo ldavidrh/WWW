@@ -123,9 +123,9 @@ def CrearCliente(request):
             return redirect('landing')
         else:
             messages.warning(request, 'Por favor verifique el CAPTCHA')
-            return render(request, 'Usuarios/CrearCliente.html', {})
+            return render(request, 'Usuarios/CrearCliente2.html', {})
 
-    return render(request, 'Usuarios/CrearCliente.html', {})
+    return render(request, 'Usuarios/CrearCliente2.html', {})
 
 def ClienteAntiguo(request):
     if request.method == 'POST':
