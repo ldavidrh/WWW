@@ -1,9 +1,9 @@
 from django.urls import path
 from .views import *
 
-app_name='subestaciones'
+app_name = 'subestaciones'
 
-urlpatterns=[
+urlpatterns = [
     path('registrar/', registrar_view, name='registrar'),
     path('consultar/', consultar_view, name='consultar'),
     path('eliminar/<int:id>', eliminar_view, name='eliminar'),
