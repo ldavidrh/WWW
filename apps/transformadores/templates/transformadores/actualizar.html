@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load leaflet_tags %}
+
+{% block content %}
+<div class="card card-primary leaflet-container">
+    <div class="card-header">
+        <h3 class="card-title">Actualizar transformador</h3>
+    </div>
+    <!-- /.card-header -->
+    {% leaflet_map "mimapa" callback="window.map_init_basic" %}
+    <div>
+        <form method="post">
+            <div class="card-body">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /.card -->
+{% endblock content %}
+
+{% block js %}
+<script type="text/javascript">
+    var jsontransformador = {{ transformador | safe}};
+    $(document).ready(function () {
+        for (transformador of jsontransformador) {
+            if (transformador.fields['latitud'] != null || transformador.fields['longitud'] != null) {
+                document.getElementById("id_latitud").value = transformador.fields['latitud'];
+                document.getElementById("id_longitud").value = transformador.fields['longitud'];
+            }
+
+            document.getElementById("id_marca").value = transformador.fields['marca'];
+
+            if (transformador.fields['activo'] == true) {
+                document.getElementById("id_activo").checked = true;
+            } else {
+                document.getElementById("id_activo").checked = false;
+            }
+        }
+        checkSubstation();
+    });
+
+    function checkSubstation() {
+        let substation = document.getElementById("id_subestacion").value;
+        if (substation !== "") {
+            document.getElementById("id_latitud").disabled = true;
+            document.getElementById("id_longitud").disabled = true;
+            document.getElementById("id_latitud").value = "";
+            document.getElementById("id_longitud").value = "";
+        } else {
+            document.getElementById("id_latitud").disabled = false;
+            document.getElementById("id_longitud").disabled = false;
+        }
+    }
+
+    $("#id_subestacion").on('change', function (evt) {
+        checkSubstation();
+    })
+
+    function map_init_basic(map, options) {
+        let defaultLocation = []
+        for (transformador of jsontransformador) {
+            if (transformador.fields['latitud'] == null || transformador.fields['longitud'] == null) {
+                defaultLocation = [3.43357380543038, -76.5255689620972]
+            } else {
+                defaultLocation = [transformador.fields['latitud'], transformador.fields['longitud']]
+            }
+        }
+        var marker = new L.marker(defaultLocation, { draggable: 'true' })
+
+        marker.on('dragend', function (evt) {
+            var position = marker.getLatLng();
+            marker.setLatLng(position, {
+                draggable: 'true'
+            });
+            document.getElementById("id_latitud").value = position.lat;
+            document.getElementById("id_longitud").value = position.lng;
+        })
+
+
+
+        marker.addTo(map);
+    }
+
+</script>
+
+<style>
+    .leaflet-container {
+        /* all maps */
+        width: 1000px;
+        height: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #specialbigmap {
+        height: 800px;
+    }
+
+    /* Resize the "display_raw" textbox */
+    .django-leaflet-raw-textarea {
+        width: 100%;
+    }
+</style>
+
+
+{% endblock js %}

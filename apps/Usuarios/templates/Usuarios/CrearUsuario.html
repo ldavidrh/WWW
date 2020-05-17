@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block content %}
+<div class="row text-center">
+    <div class="col-md-3">
+        <p style="color: transparent">puto el que lo lea</p>
+    </div>
+    <div class="col-md-6">
+        <div class="card-body register-card-body">
+            <p class="login-box-msg">Registra un nuevo empleado</p>
+            <div class="card-body">
+                <form method='POST' enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row text-center">
+                        <div class="col-md-12">
+                            {% bootstrap_field form.first_name %}
+                            {% bootstrap_field form.last_name %}
+                            {% bootstrap_field form.email %}
+                            {% bootstrap_field form.cedula %}
+                            {% bootstrap_field form.password1 %}
+                            {% bootstrap_field form.password2 %}
+                            {% bootstrap_field form.roles %}
+                        </div>
+                        <div class="col-md-5">
+                            <!--{% bootstrap_field form.foto_perfil %} -->
+
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-md-12 text-center">
+                            <button class = "btn bg-gradient-primary" type = "submit">Agregar</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <p style="color: transparent">s</p>
+    </div>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script type="text/javascript">
+    $(function () {
+        const div1 = document.createElement('div');
+        div1.className = 'input-group-append';
+        const div2 = document.createElement('div');
+        div2.className = 'input-group-text';
+        let spanUser = document.createElement('span');
+        spanUser.className = 'fas fa-user';
+
+        let div_nombre = document.getElementById('id_first_name').parentNode;
+        div_nombre.className = 'input-group mb-3 n';
+        div_nombre.removeChild(div_nombre.firstChild);
+        div_nombre.appendChild(div1.cloneNode(true)).appendChild(div2.cloneNode(true)).appendChild(spanUser.cloneNode(true));
+
+        let div_apellido = document.getElementById('id_last_name').parentNode;
+        div_apellido.className = 'input-group mb-3 m';
+        div_apellido.removeChild(div_apellido.firstChild);
+        div_apellido.appendChild(div1).appendChild(div2).appendChild(spanUser);
+
+        let div_correo = document.getElementById('id_email').parentNode;
+        let spanEmail = document.createElement('span');
+        spanEmail.className = 'fas fa-envelope';
+        div_correo.className = 'input-group mb-3 m';
+        div_correo.removeChild(div_correo.firstChild);
+        div_correo.appendChild(div1.cloneNode(false)).appendChild(div2.cloneNode(false)).appendChild(spanEmail);
+
+        let div_cedula = document.getElementById('id_cedula').parentNode;
+        let spanCedula = document.createElement('span');
+        spanCedula.className = 'fas fa-id-card';
+        div_cedula.className = 'input-group mb-3 m';
+        div_cedula.removeChild(div_cedula.firstChild);
+        div_cedula.appendChild(div1.cloneNode(false)).appendChild(div2.cloneNode(false)).appendChild(spanCedula); //id-card nextSibling
+
+        let div_pssw1 = document.getElementById('id_password1').parentNode;
+        let spanPssw1 = document.createElement('span');
+        spanPssw1.className = 'fas fa-key';
+        div_pssw1.className = 'input-group mb-3 m';
+        div_pssw1.removeChild(div_pssw1.firstChild);
+        div_pssw1.appendChild(div1.cloneNode(false)).appendChild(div2.cloneNode(false)).appendChild(spanPssw1); //id-card nextSibling
+
+        let div_pssw2 = document.getElementById('id_password2').parentNode;
+        let spanPssw2 = document.createElement('span');
+        spanPssw2.className = 'fas fa-key';
+        div_pssw2.className = 'input-group mb-3 m';
+        div_pssw2.removeChild(div_pssw2.firstChild);
+        div_pssw2.appendChild(div1.cloneNode(false)).appendChild(div2.cloneNode(false)).appendChild(spanPssw2); //id-card nextSibling
+
+        let div_rol = document.getElementById('id_roles').parentNode;
+        div_rol.removeChild(div_rol.firstChild);
+        
+    
+    })
+</script>
+
+{% endblock %}

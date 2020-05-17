@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% load leaflet_tags %}
+
+{% block content %}
+<div class="card card-primary leaflet-container">
+    <div class="card-header">
+      <h3 class="card-title">Subestaciones</h3>
+    </div>
+      <!-- /.card-header -->
+
+      {% leaflet_map "mimapa" callback="window.map_init_basic" %}
+
+    <div class="card-body">
+      <table id="example2" class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
+            <th>Activo</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for subestacion in subestaciones %}
+            <tr role="row">
+                <td>{{subestacion.id}}</td>
+                <td>{{subestacion.nombre}}</td>
+                <td>{{subestacion.latitud}}</td>
+                <td>{{subestacion.longitud}}</td>
+                <td>
+                    {% if subestacion.activo == True %}
+                        Si
+                    {% else %}
+                        No
+                    {% endif %}
+                    
+                </td>
+                <td>
+                  <div class="row">
+                   <div class="col-sm-4"> 
+                     <a href="{% url 'subestaciones:eliminar' subestacion.id %}" title="Desactivar">
+                     <button type="button" class="btn btn-danger"> 
+                      <i class="fas fa-minus-circle"></i>
+                     </button>
+                    </a>
+                   </div>
+                   <div class="col-sm-8">
+                    <a href="{% url 'subestaciones:actualizar' subestacion.id %}" title="Actualizar">
+                      <button type="button" class="btn btn-info"> 
+                       <i class="fas fa-edit"></i>
+                      </button>
+                     </a>
+                   </div>
+                  </div>
+               </td>
+            </tr>
+            
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
+            <th>Activo</th>
+            <th>Acciones</th>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+    function map_init_basic (map, options) {
+        {% for subestacion in jsonsubestaciones %}
+            L.marker(['{{subestacion.latitud}}', '{{subestacion.longitud}}']).addTo(map).bindPopup('Nombre: {{subestacion.nombre}}, Activa: {{subestacion.activo}}');
+        {% endfor %}
+    }
+</script>
+
+<style>
+    .leaflet-container {  /* all maps */
+        width:  1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #specialbigmap {
+        height: 800px;
+    }
+
+    /* Resize the "display_raw" textbox */
+    .django-leaflet-raw-textarea {
+        width: 100%;
+    }
+</style>
+
+{% endblock js %}

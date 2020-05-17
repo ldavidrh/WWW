@@ -23,6 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 with open("%s/secrets.json" % (BASE_DIR)) as f:
     secrets = json.loads(f.read())
 
+
 def get_secret(setting, secrets=secrets):
     try:
         return secrets[setting]
@@ -34,6 +35,7 @@ def get_secret(setting, secrets=secrets):
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_secret("SECRET_KEY")
 
@@ -42,21 +44,26 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'Usuarios.Empleados'
 
 # Application definition
 
 INSTALLED_APPS = [
-    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    # utils
+    'rest_framework',
     'bootstrap4',
-
+    'leaflet',
+    # apps
     'apps.Usuarios',
+    'apps.api',
+    'apps.subestaciones',
+    'apps.transformadores',
 ]
 
 MIDDLEWARE = [
@@ -148,8 +155,30 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
 MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static_collected')
+
+LOGIN_REDIRECT_URL = 'usuarios:home'
+LOGIN_URL = 'usuarios:login'
+
+# Leaflet parameters
+LEAFLET_CONFIG = {
+    'DEFAULT_CENTER': (3.4322456610496523, -76.52543039415343),
+    'DEFAULT_ZOOM': 12,
+    'MIN_ZOOM': 3,
+    'MAX_ZOOM': 18,
+    'RESET_VIEW': False
+}
+
+
+# SMTP parameters
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = 'electrisoftwww@gmail.com'
+EMAIL_HOST_PASSWORD = 'proyectowww'
+EMAIL_USE_TSL = True
+EMAIL_PORT = 587

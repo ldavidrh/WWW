@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+
+<div class="row text-center">
+  <div class="col-md-3">
+     <p style="color: transparent">puto el que lo lea</p>
+  </div>
+  <div class="col-md-6">
+      <div class="card-body register-card-body">
+          <p class="login-box-msg">Solicitud de servicio de energia</p>
+          <div class="card-body">
+              <form method='POST' action="{% url 'usuarios:CrearCliente'%}">
+                  {% csrf_token %}
+                  <div class="row text-center">
+                      <div class="col-md-12">
+                        <div class="input-group mb-3">
+                          <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" required="required">
+                          <div class="input-group-append">
+                            <div class="input-group-text">
+                              <span class="fas fa-user"></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="div_apellido" class="input-group mb-3">
+                          <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellido" required="required">
+                          <div class="input-group-append">
+                            <div class="input-group-text">
+                              <span class="fas fa-user"></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <select name="tipo" id="tipo" class="form-control custom-select">
+                          <option value="persona natural">Persona natural</option>
+                          <option value="persona juridica">Persona juridica</option>
+                          </select>
+                        </div>
+                        <div class="input-group mb-3">
+                          <input type="number" name="cedula" id="cedula" class="form-control" placeholder="Cedula" required="required" min="1" max="9999999999999999">
+                          <div class="input-group-append">
+                            <div class="input-group-text">
+                              <span class="fas fa-id-card"></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="input-group mb-3">
+                          <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo" required="required">
+                          <div class="input-group-append">
+                            <div class="input-group-text">
+                              <span class="fas fa-envelope"></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="input-group mb-3">
+                          <input type="number" name="telefono" id="telefono" class="form-control" placeholder="Telefono" required="required">
+                          <div class="input-group-append">
+                            <div class="input-group-text">
+                              <span class="fas fa-mobile-alt"></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="input-group mb-3">
+                          <input type="text" name="direccion" id="direccion" class="form-control" placeholder="Dirección" required="required">
+                          <div class="input-group-append">
+                            <div class="input-group-text">
+                              <span class="fas fa-map-marker-alt"></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="g-recaptcha" data-sitekey="6Lf_6_QUAAAAAIOxioixBz2ggVI81zzB098SAlRA"></div>
+                        <div class="form-group"> 
+                          <button type="submit" class="btn bg-gradient-primary">Enviar</button>
+                        </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-3">
+      <p style="color: transparent">s</p>
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+   <script  type="text/javascript">
+    $("#tipo").change(function(){
+      var op = $(this).find("option:selected").val();
+      if(op=="persona natural"){
+        $('#nombre').attr('placeholder','Nombre');
+        $('#cedula').attr('placeholder','Cédula');
+        $('#apellido').attr('required', true);
+        $('#div_apellido').show();
+      }else{
+        $('#nombre').attr('placeholder','Razón social');
+        $('#cedula').attr('placeholder','NIT');
+        $('#apellido').attr('required', false);
+        $('#div_apellido').hide();
+      }						
+    });
+   </script>    
+{% endblock %}
