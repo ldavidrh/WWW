@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('usuarios/', include('apps.Usuarios.urls', namespace='usuarios')),
     path('api/', include('apps.api.urls', namespace='api')),
+    path('facturas/', include('apps.facturas.urls', namespace='facturas')),
     #path('', views.home, name='home'),
     path('', views.landing, name='landing'),
     path('subestaciones/', include('apps.subestaciones.urls', namespace='subestaciones')),
