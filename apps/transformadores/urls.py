@@ -1,9 +1,9 @@
 from django.urls import path
 from .views import *
 
-app_name='transformadores'
+app_name = 'transformadores'
 
-urlpatterns=[
+urlpatterns = [
     path('registrar/', registrar_view, name='registrar'),
     path('consultar/', consultar_view, name='consultar'),
     path('eliminar/<str:serial>', eliminar_view, name='eliminar'),

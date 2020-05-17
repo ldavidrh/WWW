@@ -12,8 +12,10 @@ class SubestacionSerializer(serializers.Serializer):
     latitud = serializers.DecimalField(max_digits=18, decimal_places=15)
     longitud = serializers.DecimalField(max_digits=18, decimal_places=15)
     activo = serializers.BooleanField()
-    
+
 # Create your views here.
+
+
 def registrar_view(request):
     if request.method == 'POST':
         form = FormularioRegistroSubestacion(request.POST)
@@ -26,12 +28,14 @@ def registrar_view(request):
     else:
         form = FormularioRegistroSubestacion()
 
-    return render(request, 'subestaciones/registrar.html', {'form':form})
+    return render(request, 'subestaciones/registrar.html', {'form': form})
+
 
 def consultar_view(request):
     subestaciones = Subestacion.objects.all()
     serializer = SubestacionSerializer(subestaciones, many=True)
-    return render(request, 'subestaciones/consultar.html', {'subestaciones':subestaciones, "jsonsubestaciones":serializer.data})
+    return render(request, 'subestaciones/consultar.html', {'subestaciones': subestaciones, "jsonsubestaciones": serializer.data})
+
 
 def eliminar_view(request, id):
     try:
@@ -39,16 +43,18 @@ def eliminar_view(request, id):
         subestacion.activo = False
         subestacion.save()
         messages.success(request, 'La subestacion se ha desactivado exitosamente')
-        
+
     except:
         messages.error(request, 'Error al desactivar la subestacion')
 
     return redirect('subestaciones:consultar')
-    
+
+
 def actualizar_view(request, id):
     subestacion = Subestacion.objects.get(pk=id)
     if request.method == 'POST':
-        form = FormularioRegistroSubestacion(request.POST, instance=subestacion)
+        form = FormularioRegistroSubestacion(
+            request.POST, instance=subestacion)
         if form.is_valid():
             form.save()
             messages.success(request, "Subestacion actualizada exitosamente")
@@ -57,8 +63,6 @@ def actualizar_view(request, id):
             messages.error(request, "Error al actualizar subestacion")
     else:
         form = FormularioRegistroSubestacion()
+
     serializer = SubestacionSerializer(subestacion)
-    return render(request, 'subestaciones/actualizar.html', {'form':form, 'subestacion':serializer.data})
-
-
-
+    return render(request, 'subestaciones/actualizar.html', {'form': form, 'subestacion': serializer.data})
