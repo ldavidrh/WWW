@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 <div class="row text-center">
@@ -9,7 +10,7 @@
     </div>
     <div class="col-md-6">
         <div class="card-body register-card-body">
-            <p class="login-box-msg">Registra un nuevo empleado</p>
+            <p class="login-box-msg">{% blocktrans %}Registra un nuevo empleado{% endblocktrans %}</p>
             <div class="card-body">
                 <form method='POST' enctype="multipart/form-data">
                     {% csrf_token %}
@@ -30,7 +31,7 @@
                     </div>
                     <div class="row text-center">
                         <div class="col-md-12 text-center">
-                            <button class = "btn bg-gradient-primary" type = "submit">Agregar</button>
+                            <button class = "btn bg-gradient-primary" type = "submit">{% blocktrans %}Agregar{% endblocktrans %}</button>
                         </div>
                     </div>
                 </form>

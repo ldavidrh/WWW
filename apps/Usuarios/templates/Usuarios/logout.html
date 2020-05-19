@@ -1,6 +1,6 @@
 {% load static %}
 {% load bootstrap4 %}
-
+{% load i18n %}
 
 <html>
 
@@ -32,17 +32,17 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Fin de Sesión</p>
+      <p class="login-box-msg">{% blocktrans %}Fin de Sesión{% endblocktrans %}</p>
 
-      <h3 class="text-center">¡Cerraste sesión!</h3>
+      <h3 class="text-center">{% blocktrans %}¡Cerraste sesión!{% endblocktrans %}</h3>
       <a href="{% url 'usuarios:login' %}">
-        <button type="submit" class="btn btn-primary btn-block">Vuelve a iniciar sesión</button>
+        <button type="submit" class="btn btn-primary btn-block">{% blocktrans %}Vuelve a iniciar sesión{% endblocktrans %}</button>
       </a>
       
-        <p class="text-center"> Ó </p>
+        <p class="text-center">{% blocktrans %} Ó {% endblocktrans %}</p>
       
       <a href="{% url 'landing' %}">
-        <button type="submit" class="btn btn-primary btn-block">Vuelve al inicio</button>
+        <button type="submit" class="btn btn-primary btn-block">{% blocktrans %}Vuelve al inicio{% endblocktrans %}</button>
       </a>
 
     </div>

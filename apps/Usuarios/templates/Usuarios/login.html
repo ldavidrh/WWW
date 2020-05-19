@@ -1,6 +1,6 @@
 {% load static %}
 {% load bootstrap4 %}
-
+{% load i18n %}
 
 <html>
 
@@ -32,21 +32,21 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Inicio de Sesion</p>
+      <p class="login-box-msg">{% blocktrans %}Inicio de Sesion{% endblocktrans %}</p>
 
       <form method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
         <div class="row">
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+            <button type="submit" class="btn btn-primary btn-block">{% blocktrans %}Ingresar{% endblocktrans %}</button>
           </div>
         </div>
       </form>
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <a href="https://adminlte.io/themes/dev/AdminLTE/pages/examples/forgot-password.html">Olvide mi contraseña</a>
+        <a href="https://adminlte.io/themes/dev/AdminLTE/pages/examples/forgot-password.html">{% blocktrans %}Olvide mi contraseña{% endblocktrans %}</a>
       </p>
     </div>
     <!-- /.login-card-body -->
