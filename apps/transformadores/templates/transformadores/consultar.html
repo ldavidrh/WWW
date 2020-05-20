@@ -2,11 +2,12 @@
 {% load static %}
 {% load bootstrap4 %}
 {% load leaflet_tags %}
+{% load i18n %}
 
 {% block content %}
 <div class="card card-primary leaflet-container">
   <div class="card-header">
-    <h3 class="card-title">Transformadores</h3>
+    <h3 class="card-title">{% blocktrans %}Transformadores{% endblocktrans %}</h3>
   </div>
   <!-- /.card-header -->
 
@@ -16,13 +17,13 @@
     <table id="example2" class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th>Serial</th>
-          <th>Latitud</th>
-          <th>Longitud</th>
-          <th>Devanado</th>
-          <th>Subestacion</th>
-          <th>Activo</th>
-          <th>Acciones</th>
+          <th>{% blocktrans %}Serial{% endblocktrans %}</th>
+          <th>{% blocktrans %}Latitud{% endblocktrans %}</th>
+          <th>{% blocktrans %}Longitud{% endblocktrans %}</th>
+          <th>{% blocktrans %}Devanado{% endblocktrans %}</th>
+          <th>{% blocktrans %}Subestacion{% endblocktrans %}</th>
+          <th>{% blocktrans %}Activo{% endblocktrans %}</th>
+          <th>{% blocktrans %}Acciones{% endblocktrans %}</th>
         </tr>
       </thead>
       <tbody>
@@ -43,14 +44,14 @@
           <td>
             <div class="row">
               <div class="col-sm-4">
-                <a href="{% url 'transformadores:eliminar' transformador.serial %}" title="Desactivar">
+                <a href="{% url 'transformadores:eliminar' transformador.serial %}" title="{% trans "Desactivar" %}">
                   <button type="button" class="btn btn-danger">
                     <i class="fas fa-minus-circle"></i>
                   </button>
                 </a>
               </div>
               <div class="col-sm-8">
-                <a href="{% url 'transformadores:actualizar' transformador.serial %}" title="Actualizar">
+                <a href="{% url 'transformadores:actualizar' transformador.serial %}" title="{% trans "Actualizar" %}">
                   <button type="button" class="btn btn-info">
                     <i class="fas fa-edit"></i>
                   </button>
@@ -64,13 +65,13 @@
       </tbody>
       <tfoot>
         <tr>
-          <th>Serial</th>
-          <th>Latitud</th>
-          <th>Longitud</th>
-          <th>Devanado</th>
-          <th>Subestacion</th>
-          <th>Activo</th>
-          <th>Acciones</th>
+          <th>{% blocktrans %}Serial{% endblocktrans %}</th>
+          <th>{% blocktrans %}Latitud{% endblocktrans %}</th>
+          <th>{% blocktrans %}Longitud{% endblocktrans %}</th>
+          <th>{% blocktrans %}Devanado{% endblocktrans %}</th>
+          <th>{% blocktrans %}Subestacion{% endblocktrans %}</th>
+          <th>{% blocktrans %}Activo{% endblocktrans %}</th>
+          <th>{% blocktrans %}Acciones{% endblocktrans %}</th>
         </tr>
       </tfoot>
     </table>
