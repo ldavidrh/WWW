@@ -111,7 +111,6 @@ msgstr "Tabla de busqueda"
 
 #: apps/Usuarios/templates/Usuarios/ListaAprobar.html:14
 #: apps/Usuarios/templates/Usuarios/ListaClientes.html:14
-#: templates/base.html:60
 msgid "Search"
 msgstr "Buscar"
 
@@ -313,7 +312,7 @@ msgid "Actualizar subestacion"
 msgstr "Actualizar subestacion"
 
 #: apps/subestaciones/templates/subestaciones/consultar.html:10
-#: templates/base.html:245
+#: templates/base.html:200
 msgid "Subestaciones"
 msgstr "Subestaciones"
 
@@ -350,7 +349,7 @@ msgid "Actualizar transformador"
 msgstr "Actualizar transformador"
 
 #: apps/transformadores/templates/transformadores/consultar.html:10
-#: templates/base.html:269
+#: templates/base.html:224
 msgid "Transformadores"
 msgstr "Transformadores"
 
@@ -374,7 +373,7 @@ msgid "Registrar transformador"
 msgstr "Registrar transformador"
 
 #: apps/transformadores/templates/transformadores/registrar.html:23
-#: templates/base.html:252 templates/base.html:276
+#: templates/base.html:207 templates/base.html:231
 msgid "Registrar"
 msgstr "Registrar"
 
@@ -410,87 +409,67 @@ msgstr "Aqui"
 msgid "Home"
 msgstr "Inicio"
 
-#: templates/base.html:75
+#: templates/base.html:61
 msgid "Cerrar sesión"
 msgstr "Cerrar sesión"
 
-#: templates/base.html:82
+#: templates/base.html:68
 msgid "Iniciar sesión"
 msgstr "Iniciar sesión"
 
-#: templates/base.html:88
+#: templates/base.html:74
 msgid "Solicite nuestros servicios"
 msgstr "Solicite nuestros servicios"
 
-#: templates/base.html:100
-msgid "Notifications"
-msgstr "Notificaciones"
-
-#: templates/base.html:103
-msgid "new messages"
-msgstr "Nuevos mensajes"
-
-#: templates/base.html:108
-msgid "friend requests"
-msgstr "Solicitudes de amistad"
-
 #: templates/base.html:113
-msgid "new reports"
-msgstr "Nuevos reportes"
-
-#: templates/base.html:117
-msgid "See All Notifications"
-msgstr "Ver todas las notificaciones"
-
-#: templates/base.html:158
 msgid "Menu"
 msgstr "Menu"
 
-#: templates/base.html:164
+#: templates/base.html:119
 msgid "Reportes"
 msgstr "Reportes"
 
-#: templates/base.html:172
+#: templates/base.html:127
 msgid "Reporte 1"
 msgstr "Reporte 1"
 
-#: templates/base.html:178
+#: templates/base.html:133
 msgid "Reporte2"
 msgstr "Reporte 2"
 
-#: templates/base.html:184
+#: templates/base.html:139
 msgid "Reporte3"
 msgstr "Reporte 3"
 
-#: templates/base.html:190
+#: templates/base.html:145
 msgid "Reporte4"
 msgstr "Reporte 4"
 
-#: templates/base.html:207
+#: templates/base.html:162
 msgid "Crear Empleados"
 msgstr "Crear empleados"
 
-#: templates/base.html:214
+#: templates/base.html:169
 msgid "Listar empleados"
 msgstr "Listar empleados"
 
-#: templates/base.html:222
+#: templates/base.html:177
 msgid "Solicitudes"
 msgstr "Solicitudes"
 
-#: templates/base.html:229
+#: templates/base.html:184
 msgid "Clientes nuevos"
 msgstr "Clientes nuevos"
 
-#: templates/base.html:235
+#: templates/base.html:190
 msgid "Clientes antiguos"
 msgstr "Clientes antiguos"
 
-#: templates/base.html:258 templates/base.html:282
+#: templates/base.html:213 templates/base.html:237
 msgid "Consultar"
 msgstr "Consultar"
 
-#: templates/base.html:294
+#: templates/base.html:249
 msgid "Lista Clientes"
 msgstr "Lista clientes"
 
