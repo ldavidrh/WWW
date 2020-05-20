@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 {% load static %}
+{% load i18n %}
+
 
 {% block content %}
 <div class="row text-center">
@@ -10,16 +12,16 @@
 
 <div class="col-md-6 text-center">
     <div class="row text-center">
-        <button type="button" class="btn btn-block btn-outline-info btn-lg" onclick="window.location.assign('{% url 'usuarios:CrearCliente' %}')">Cliente nuevo</button>
+        <button type="button" class="btn btn-block btn-outline-info btn-lg" onclick="window.location.assign('{% url 'usuarios:CrearCliente' %}')">{% blocktrans %}Cliente nuevo{% endblocktrans %}</button>
     </div>
     <br>
     <div class="row text-center">
-        <button type="button" class="btn btn-block btn-outline-info btn-lg" data-toggle="modal" data-target="#myModal">Cliente ya registrado</button>
+        <button type="button" class="btn btn-block btn-outline-info btn-lg" data-toggle="modal" data-target="#myModal">{% blocktrans %}Cliente ya registrado{% endblocktrans %}</button>
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Solicitud cliente antiguo</h4>
+                        <h4 class="modal-title" id="myModalLabel">{% blocktrans %}Solicitud cliente antiguo{% endblocktrans %}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="row">
@@ -27,7 +29,7 @@
                             {% csrf_token %}
                             <div class="row">
                                 <div class="input-group mb-3">
-                                    <input type="number" name="cedula" id="cedula" class="form-control" placeholder="Cedula" required="required" min="1" max="9999999999999999">
+                                    <input type="number" name="cedula" id="cedula" class="form-control" placeholder="{% trans "Cedula" %}" required="required" min="1" max="9999999999999999">
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <span class="fas fa-id-card"></span>
@@ -39,7 +41,7 @@
                             <!--</div>  
                             <div class="row">-->      
                                 <div class="input-group mb-3">
-                                    <input type="text" name="direccion" id="direccion" class="form-control" placeholder="Dirección" required="required">
+                                    <input type="text" name="direccion" id="direccion" class="form-control" placeholder="{% trans "Direccion" %}" required="required">
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <span class="fas fa-map-marker-alt"></span>
@@ -47,8 +49,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="btn  bg-gradient-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn  bg-gradient-success">Enviar</button>
+                            <button type="button" class="btn  bg-gradient-danger" data-dismiss="modal">{% blocktrans %}Cancelar{% endblocktrans %}</button>
+                            <button type="submit" class="btn  bg-gradient-success">{% blocktrans %}Enviar{% endblocktrans %}</button>
                         </form>
                     </div> 
                     <div class="modal-footer">

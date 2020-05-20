@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
-
+{% load i18n %}
 
 {% block content %}
 <form method='POST' enctype="multipart/form-data" >
     {% csrf_token %}
     {% bootstrap_form form %}
     <div class="form-group">
-        <button class = "btn btn-outline-info" type = "submit">Actualizar</button>
+        <button class = "btn btn-outline-info" type = "submit">{% blocktrans %}Actualizar{% endblocktrans %}</button>
     </div>
 </form>
 

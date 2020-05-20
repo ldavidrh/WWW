@@ -1,9 +1,10 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>403 Permiso denegado</title>
+  <title>{% blocktrans %}403 Permiso denegado{% endblocktrans %}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,9 +23,9 @@
   <div class="error-page", style="margin-top: 200px;">
     <h2 class="headline text-warning"> 403</h2>
     <div class="error-content">
-      <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! No tienes permiso para acceder a esta pagina</h3>
+      <h3><i class="fas fa-exclamation-triangle text-warning"></i> {% blocktrans %}Oops! No tienes permiso para acceder a esta pagina{% endblocktrans %}</h3>
       <p>
-        Vuelve a la pagina de inicio <a href="http://127.0.0.1:8000/">aqui</a>
+        {% blocktrans %}Vuelve a la pagina de inicio{% endblocktrans %} <a href="http://127.0.0.1:8000/">{% blocktrans %}aqui{% endblocktrans %}</a>
       </p>
     </div>
     <!-- /.error-content -->
