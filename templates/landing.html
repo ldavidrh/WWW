@@ -1,104 +1,136 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="es">
+    <head>
+        <title>Electrisoft</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1"> 
+        <link rel="stylesheet" href="static/dist/css/fontello.css">
+        <link rel="stylesheet" href="static/dist/css/estilos.css">
 
-<head>
-    <title>Electrisoft</title>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
-    <link rel="stylesheet" href="static/dist/css/fontello.css">
-    <link rel="stylesheet" href="static/dist/css/estilos.css">
-</head>
+        <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- Tempusdominus Bbootstrap 4 -->
+        <link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css'%}">
+        <!-- iCheck -->
+        <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css'%}">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css'%}">
+        <!-- overlayScrollbars -->
+        <link rel="stylesheet" href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css'%}">
+        <!-- Daterange picker -->
+        <link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css'%}">
+        <!-- Google Font: Source Sans Pro -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+        <!-- SweetAlert2 -->
+        <link rel="stylesheet" href="{% static 'plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css' %}">
+        <!-- Toastr -->
+        <link rel="stylesheet" href="{% static 'plugins/toastr/toastr.min.css' %}">
+        <!--Leaflet-->
+        <link rel="stylesheet" href="{% static 'plugins/leaflet/leaflet.css' %}">
+    </head>
 
-<body>
-    <header>
-        <div class="contenedor">
-            <h1 class="icon-flash">Electrisoft</h1>
-            <input type="checkbox" , id="menu-bar">
-            <label class="icon-menu" for="menu-bar"></label>
-            <nav class="menu">
-                <a href="{% url 'usuarios:login' %}">Ingresar</a>
-                <a href="{% url 'usuarios:CrearCliente' %}">Solicitar servicio</a>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section id="banner">
-            <img src="static/dist/img/baner.jpg">
+    <body>
+        <header>
             <div class="contenedor">
-                <h2>El mejor servicio de la ciudad</h2>
-                <p>Trabajamos para mejorar el pais</p>
-                <a href="#">Consulte su factura aqui</a>
+                <h1 class="icon-flash">Electrisoft</h1>
+                <input type="checkbox", id="menu-bar">
+                <label class="icon-menu" for="menu-bar"></label>
+                <nav class="menu">
+                    <a href="{% url 'usuarios:login' %}">Ingresar</a>
+                    <a href="{% url 'usuarios:CrearCliente' %}">Solicitar servicio</a>
+                </nav>
             </div>
-        </section>
+        </header>
 
-        <section id="Bienvenidos">
-            <h2>Bienvenidos a Electrisoft</h2>
-            <p>Somos la empresa que le da energia a tu vida</p>
-        </section>
-
-        <section id="blog">
-            <h3>Lo último de nuestra empresa</h3>
-            <div class="contenedor">
-                <article>
-                    <img src="static/dist/img/objetivos.jpg">
-                    <h4>Objetivos</h4>
-                </article>
-                <article>
-                    <img src="static/dist/img/servicio.jpg">
-                    <h4>Cero fallas</h4>
-                </article>
-            </div>
-        </section>
-
-        <section id="info">
-            <h3>Servicios</h3>
-            <div class="contenedor">
-                <div class="info-serv">
-                    <img src="static/dist/img/dudas.jpg">
-                    <h4>Preguntas frecuentes</h4>
+        <main>
+            <section id="banner">
+                <img src="static/dist/img/baner.jpg">
+                <div class="contenedor">
+                    <h2>El mejor servicio de la ciudad</h2>
+                    <p>Trabajamos para mejorar el pais</p>
+                    <a href="#">Consulte su factura aqui</a>
                 </div>
-                <div class="info-serv">
-                    <img src="static/dist/img/servicio tecnico.jpg">
-                    <h4>Servicio tecnico</h4>
+            </section>
+
+            <section id="Bienvenidos">
+                <h2>Bienvenidos a Electrisoft</h2>
+                <p>Somos la empresa que le da energia a tu vida</p>
+            </section>
+
+            <section id="blog">
+                <h3>Lo último de nuestra empresa</h3>
+                <div class="contenedor">
+                    <article>
+                        <img src="static/dist/img/objetivos.jpg">
+                        <h4>Objetivos</h4>
+                    </article>
+                    <article>
+                        <img src="static/dist/img/servicio.jpg">
+                        <h4>Cero fallas</h4>
+                    </article>
+                </div>
+            </section>
+
+            <section id="info">
+                <h3>Servicios</h3>
+                <div class="contenedor">
+                    <div class="info-serv">
+                        <img src="static/dist/img/dudas.jpg" >
+                        <h4>Preguntas frecuentes</h4>
+                    </div>
+                    <div class="info-serv">
+                        <img src="static/dist/img/servicio tecnico.jpg">
+                        <h4>Servicio tecnico</h4>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="contenedor">
+                <p class="copy">Electrisoft &copy; 2020</p>
+                <div class="sociales">
+                    <a class="icon-mail-alt" href="#"></a>
+                    <a class="icon-facebook-rect" href="#"></a>
+                    <a class="icon-instagram" href="#"></a>
                 </div>
             </div>
-        </section>
-    </main>
+        </footer>
+        <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+        <script src="{% static 'dist/js/adminlte.js' %}"></script>
+        <script>
+        $.widget.bridge('uibutton', $.ui.button)
+        </script>
+        <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'plugins/moment/moment.min.js' %}"></script>
+        <script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
+        <script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+        <script src="{% static 'plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+        <script src="{% static 'plugins/sweetalert2/sweetalert2.min.js' %}"></script>
+        <script src="{% static 'plugins/toastr/toastr.min.js' %}"></script>
+        {% if messages %}
+            {% for message in messages %}
 
-    <footer>
-        <div class="contenedor">
-            <p class="copy">Electrisoft &copy; 2020</p>
-            <div class="sociales">
-                <a class="icon-mail-alt" href="#"></a>
-                <a class="icon-facebook-rect" href="#"></a>
-                <a class="icon-instagram" href="#"></a>
-            </div>
-        </div>
-    </footer>
-    {% if messages %}
-    {% for message in messages %}
+                <script type="text/javascript">
+                $(function() {
+                    var mensaje = '{{message | safe}}';
+                    if(mensaje!=null){
 
-    <script type="text/javascript">
-        $(function () {
-            var mensaje = '{{message | safe}}';
-            if (mensaje != null) {
-
-                Swal.fire({
-                    toast: true,
-                    type: 'success',
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    text: mensaje
-                });
-            }
-        })
-    </script>
-    {% endfor %}
-    {% endif %}
-
-</body>
-
+                    Swal.fire({
+                        toast: true,
+                        type: 'success',
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        text: mensaje
+                    });
+                    }
+                })
+                </script>
+            {% endfor %}
+        {% endif %}
+    </body>
 </html>

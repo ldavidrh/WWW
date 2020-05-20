@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from django.contrib.auth.decorators import login_required, permission_required
 from .forms import FormularioRegistroEmpleados, FormularioEditarEmpleado
 from django.contrib.auth import login
 import requests, json
@@ -16,6 +17,7 @@ def home(request):
 def landing(request):
     return render(request, 'landing.html', {})
 
+@permission_required('usuarios.view_usuario', login_url=None, raise_exception=True)
 def CrearEmpleado(request):
     if request.method == 'POST':
         form = FormularioRegistroEmpleados(request.POST, request.FILES)
@@ -34,10 +36,12 @@ def CrearEmpleado(request):
 
     return render(request, 'Usuarios/CrearUsuario.html', {'form': form})
 
+@permission_required('usuarios.view_usuario', login_url=None, raise_exception=True)
 def ListaEmpleado(request):
     usuarios = Empleados.objects.all()
     return render(request, 'Usuarios/ListaEmpleados.html', {'usuarios': usuarios})
 
+@login_required
 def EditarEmpleado(request, pk):
     usuario = Empleados.objects.get(username=pk)
     if request.method == 'POST':
@@ -59,6 +63,7 @@ def EditarEmpleado(request, pk):
 
     return render(request, 'Usuarios/EditarEmpleado.html', {'form': form})
 
+@permission_required('usuarios.view_usuario', login_url=None, raise_exception=True)
 def EliminarEmpleado(request, pk):
     usuario = Empleados.objects.get(username=pk)
     usuario.is_active = False
@@ -66,13 +71,15 @@ def EliminarEmpleado(request, pk):
 
     return redirect('usuarios:ListaEmpleado')
 
+@permission_required('usuarios.view_usuario', login_url=None, raise_exception=True)
 def ActivarEmpleado(request, pk):
     usuario = Empleados.objects.get(username=pk)
     usuario.is_active = True
     usuario.save()
 
     return redirect('usuarios:ListaEmpleado')
-
+    
+@login_required
 def Perfil(request):
     usuario = request.user 
 
@@ -93,6 +100,7 @@ def CrearCliente(request):
         correo = datos['correo']
         telefono = datos['telefono']
         rol= datos['tipo']
+        estrato= datos['estrato']
         cedula = datos['cedula']
 
         #reCAPTCHA
@@ -111,14 +119,14 @@ def CrearCliente(request):
             messages.success(request, 'Solicitud creada exitosamente, le notificaremos cuando se haya aprobado')
             a = Clientes(first_name=nombre, last_name=apellido, tipo=rol, email=correo, cedula=cedula, telefono=telefono, username=cedula)
             a.save()
-            contrato = Contrato(cliente=a, direccion=direccion)
+            contrato = Contrato(cliente=a, direccion=direccion, estrato=estrato)
             contrato.save()
             return redirect('landing')
         else:
             messages.warning(request, 'Por favor verifique el CAPTCHA')
-            return render(request, 'Usuarios/CrearCliente.html', {})
+            return render(request, 'Usuarios/CrearCliente2.html', {})
 
-    return render(request, 'Usuarios/CrearCliente.html', {})
+    return render(request, 'Usuarios/CrearCliente2.html', {})
 
 def ClienteAntiguo(request):
     if request.method == 'POST':
@@ -150,6 +158,7 @@ def ListaCliente(request):
     clientes = Contrato.objects.filter(cliente__aprobado=True)
     return render(request, 'Usuarios/ListaClientes.html', {'clientes': clientes})
 
+@permission_required('usuarios.view_usuario', login_url=None, raise_exception=True)
 def AceptarCliente(request,pk):
     usuario = Clientes.objects.get(cedula=pk)
     contrato = Contrato.objects.get(cliente=usuario)
@@ -161,6 +170,7 @@ def AceptarCliente(request,pk):
     messages.success(request, 'Cliente aprobado!')
     return redirect('usuarios:ListaSolicitudCliente')
 
+@permission_required('usuarios.view_usuario', login_url=None, raise_exception=True)
 def AceptarClienteA(request,pk):
     contrato = Contrato.objects.get(id=pk)
     contrato.en_servicio=True
@@ -172,6 +182,7 @@ def AceptarClienteA(request,pk):
     messages.success(request, 'Cliente aprobado!')
     return redirect('usuarios:ListaSolicitudClienteA')
 
+@permission_required('usuarios.view_usuario', login_url=None, raise_exception=True)
 def RechazarCliente(request, pk):
     usuario = Clientes.objects.get(cedula=pk)
     contrato = Contrato.objects.get(cliente=usuario)
@@ -181,6 +192,7 @@ def RechazarCliente(request, pk):
     messages.success(request, 'Cliente rechazado!')
     return redirect('usuarios:ListaSolicitudCliente')
 
+@permission_required('usuarios.view_usuario', login_url=None, raise_exception=True)
 def RechazarClienteA(request, pk):
     contrato = Contrato.objects.get(id=pk)
     contrato.delete()

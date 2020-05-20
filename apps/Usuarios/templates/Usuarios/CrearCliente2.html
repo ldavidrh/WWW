@@ -1,0 +1,99 @@
+{% load static %}
+{% load bootstrap4 %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>crear cliente</title>
+    <link rel="stylesheet" href="{% static 'dist/css/estilos2.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css' %}">
+
+</head>
+
+<body>
+    <div class="contenedor-form">
+        <div class="formulario">
+            <h2>Solicitar Servicio</h2>
+            <form method='POST' action="{% url 'usuarios:CrearCliente'%}">
+                {% csrf_token %}
+                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" required="required">
+                <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellido" required="required">
+                <div class="form-group">
+                    <select name="tipo" id="tipo" class="form-control custom-select">
+                        <option value="persona natural">Persona natural</option>
+                        <option value="persona juridica">Persona juridica</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="estrato" id="estrato" class="form-control custom-select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    </select>
+                </div>                
+                <input type="number" name="cedula" id="cedula" class="form-control" placeholder="Cedula" required="required" min="1" max="9999999999999999">
+                <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo" required="required">
+                <input type="number" name="telefono" id="telefono" class="form-control" placeholder="Telefono" required="required">
+                <input type="text" name="direccion" id="direccion" class="form-control" placeholder="Dirección" required="required">
+                <div class="g-recaptcha" data-sitekey="6Lf_6_QUAAAAAIOxioixBz2ggVI81zzB098SAlRA"></div>
+            </br>
+                <div class="form-group"> 
+                    <input type="submit" value="Solicitar">
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{% static 'dist/js/jquery-3.5.1.js' %}"></script>    
+    <script src="{% static 'dist/js/main.js' %}"></script>  
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="{% static 'plugins/sweetalert2/sweetalert2.min.js' %}"></script>
+
+{% block js %}
+   <script  type="text/javascript">
+    $("#tipo").change(function(){
+      var op = $(this).find("option:selected").val();
+      if(op=="persona natural"){
+        $('#nombre').attr('placeholder','Nombre');
+        $('#cedula').attr('placeholder','Cédula');
+        $('#apellido').attr('required', true);
+        $('#div_apellido').show();
+      }else{
+        $('#nombre').attr('placeholder','Razón social');
+        $('#cedula').attr('placeholder','NIT');
+        $('#apellido').attr('required', false);
+        $('#div_apellido').hide();
+      }						
+    });
+   </script>    
+{% endblock %}
+{% if messages %}
+  {% for message in messages %}
+
+    <script type="text/javascript">
+      $(function() {
+        var mensaje = '{{message | safe}}';
+        var tags = '{{ message.tags | safe }}'
+        console.log(tags)
+        if(mensaje!=null){
+          Swal.fire({
+            toast: true,
+            type: tags,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            text: mensaje
+          });
+        }
+      })
+    </script>
+{% endfor %}
+{% endif %}
+</body>
+</html>
