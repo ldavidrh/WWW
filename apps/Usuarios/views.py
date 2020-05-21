@@ -116,15 +116,17 @@ def CrearCliente(request):
         verify = response['success']
 
         if verify:
-            messages.success(request, 'Solicitud creada exitosamente, le notificaremos cuando se haya aprobado')
-            a = Clientes(first_name=nombre, last_name=apellido, tipo=rol, email=correo, cedula=cedula, telefono=telefono, username=cedula)
-            a.save()
-            contrato = Contrato(cliente=a, direccion=direccion, estrato=estrato)
-            contrato.save()
-            return redirect('landing')
+            try:
+                messages.success(request, 'Solicitud creada exitosamente, le notificaremos cuando se haya aprobado')
+                a = Clientes(first_name=nombre, last_name=apellido, tipo=rol, email=correo, cedula=cedula, telefono=telefono, username=cedula)
+                a.save()
+                contrato = Contrato(cliente=a, direccion=direccion, estrato=estrato)
+                contrato.save()
+                return redirect('landing')
+            except:
+                messages.error(request, 'Error')
         else:
             messages.warning(request, 'Por favor verifique el CAPTCHA')
-            return render(request, 'Usuarios/CrearCliente2.html', {})
 
     return render(request, 'Usuarios/CrearCliente2.html', {})
 

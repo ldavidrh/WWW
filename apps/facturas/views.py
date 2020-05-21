@@ -59,4 +59,8 @@ def GenerarFacturas(request):
     messages.success(request, 'Facturas creadas exitosamente')
     return redirect('usuarios:home')
 
+def ConsultarFactura(request):
+    factura = Factura.objects.get(id=1)
+    return render(request, 'facturas/invoice.html', {'factura': factura})
+
         
