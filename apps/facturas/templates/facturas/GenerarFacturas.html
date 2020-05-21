@@ -1,17 +1,16 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 {% block content %}
+{% load i18n %}
   <div class="row">
     <div class="col-12">  
-      <h1>Las facturas solo se pueden generan el 28 de cada mes</h1>  
-      <h2>Fecha actual: {{hoy}}</h2>
+      <h1>{% blocktrans %}Las facturas solo se pueden generan el 28 de cada mes{% endblocktrans %}</h1>  
+      <h2>{% blocktrans %}Fecha actual: {{hoy}}{% endblocktrans %}</h2>
       {% if bandera %}
-        <button type="button" class="btn btn-outline-success btn-lg" onclick="desactiva_enlace(this); window.location.assign('{% url 'facturas:generar' %}')">Generar y enviar</button>  
+        <button type="button" class="btn btn-outline-success btn-lg" onclick="desactiva_enlace(this); window.location.assign('{% url 'facturas:generar' %}')">{% blocktrans %}Generar y enviar{% endblocktrans %}</button>  
       {% else %}
-        <button type="button" class="btn btn-outline-success btn-lg" disabled="disabled" onclick="desactiva_enlace(this); window.location.assign('{% url 'facturas:generar' %}')">Generar y enviar</button>
+        <button type="button" class="btn btn-outline-success btn-lg" disabled="disabled" onclick="desactiva_enlace(this); window.location.assign('{% url 'facturas:generar' %}')">{% blocktrans %}Generar y enviar{% endblocktrans %}</button>
       {% endif %}
-    </div>
-  </div>
 {% endblock content %}
 {% block js%}
 <script>

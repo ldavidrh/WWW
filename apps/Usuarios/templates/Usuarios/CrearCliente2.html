@@ -1,12 +1,12 @@
 {% load static %}
 {% load bootstrap4 %}
-
+{% load i18n %}
 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>crear cliente</title>
+    <title>{% blocktrans %}crear cliente{% endblocktrans %}</title>
     <link rel="stylesheet" href="{% static 'dist/css/estilos2.css' %}">
     <link rel="stylesheet" href="{% static 'plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css' %}">
 
@@ -15,15 +15,15 @@
 <body>
     <div class="contenedor-form">
         <div class="formulario">
-            <h2>Solicitar Servicio</h2>
+            <h2>{% blocktrans %}Solicitar Servicio{% endblocktrans %}</h2>
             <form method='POST' action="{% url 'usuarios:CrearCliente'%}">
                 {% csrf_token %}
-                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" required="required">
-                <div id="div_apellido"><input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellido" required="required"> </div>
+                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="{% trans "Nombre" %}" required="required">
+                <div id="div_apellido"><input type="text" name="apellido" id="apellido" class="form-control" placeholder="{% trans "Apellido" %}" required="required"></div>
                 <div class="form-group">
                     <select name="tipo" id="tipo" class="form-control custom-select">
-                        <option value="persona natural">Persona natural</option>
-                        <option value="persona juridica">Persona juridica</option>
+                        <option value="persona natural">{% blocktrans %}Persona natural{% endblocktrans %}</option>
+                        <option value="persona juridica">{% blocktrans %}Persona juridica{% endblocktrans %}</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -36,14 +36,14 @@
                     <option value="6">Estrato 6</option>
                     </select>
                 </div>                
-                <input type="number" name="cedula" id="cedula" class="form-control" placeholder="Cedula" required="required" min="1" max="9999999999999999">
-                <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo" required="required">
-                <input type="number" name="telefono" id="telefono" class="form-control" placeholder="Telefono" required="required">
-                <input type="text" name="direccion" id="direccion" class="form-control" placeholder="Dirección" required="required">
+                <input type="number" name="cedula" id="cedula" class="form-control" placeholder="{% trans "Cedula" %}" required="required" min="1" max="9999999999999999">
+                <input type="email" name="correo" id="correo" class="form-control" placeholder="{% trans "Correo" %}" required="required">
+                <input type="number" name="telefono" id="telefono" class="form-control" placeholder="{% trans "Telefono" %}" required="required">
+                <input type="text" name="direccion" id="direccion" class="form-control" placeholder="{% trans "Dirrecion" %}" required="required">
                 <div class="g-recaptcha" data-sitekey="6Lf_6_QUAAAAAIOxioixBz2ggVI81zzB098SAlRA"></div>
             </br>
                 <div class="form-group"> 
-                    <input type="submit" value="Solicitar">
+                    <input type="submit" value="{% trans "Solicitar" %}">
                 </div>
                 </div>
             </form>
