@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 19:03-0500\n"
+"POT-Creation-Date: 2020-05-19 11:00-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,36 +28,6 @@ msgstr ""
 msgid "%(value)s es muy largo"
 msgstr ""
 
-#: apps/Usuarios/models.py:38
-#, fuzzy
-#| msgid "Cedula"
-msgid "Cédula"
-msgstr "carteira de identidade"
-
-#: apps/Usuarios/models.py:39
-#: apps/Usuarios/templates/Usuarios/CrearCliente2.html:40
-#: apps/Usuarios/templates/Usuarios/ListaAprobar.html:31
-#: apps/Usuarios/templates/Usuarios/ListaAprobarA.html:30
-#: apps/Usuarios/templates/Usuarios/ListaClientes.html:31
-#: apps/Usuarios/templates/Usuarios/ListaEmpleados.html:31
-msgid "Correo"
-msgstr "e-mail"
-
-#: apps/Usuarios/models.py:40
-#: apps/Usuarios/templates/Usuarios/CrearCliente2.html:21
-#: apps/subestaciones/templates/subestaciones/consultar.html:21
-#: apps/subestaciones/templates/subestaciones/consultar.html:68
-msgid "Nombre"
-msgstr "Nome"
-
-#: apps/Usuarios/models.py:41
-#: apps/Usuarios/templates/Usuarios/CrearCliente2.html:22
-#: apps/Usuarios/templates/Usuarios/ListaAprobar.html:30
-#: apps/Usuarios/templates/Usuarios/ListaAprobarA.html:29
-#: apps/Usuarios/templates/Usuarios/ListaClientes.html:30
-msgid "Apellido"
-msgstr "Sobrenome"
-
 #: apps/Usuarios/templates/Usuarios/CrearCliente2.html:9
 msgid "crear cliente"
 msgstr "Crie cliente"
@@ -65,6 +35,19 @@ msgstr "Crie cliente"
 #: apps/Usuarios/templates/Usuarios/CrearCliente2.html:18
 msgid "Solicitar Servicio"
 msgstr "Serviço de pedido "
+
+#: apps/Usuarios/templates/Usuarios/CrearCliente2.html:21
+#: apps/subestaciones/templates/subestaciones/consultar.html:21
+#: apps/subestaciones/templates/subestaciones/consultar.html:68
+msgid "Nombre"
+msgstr "Nome"
+
+#: apps/Usuarios/templates/Usuarios/CrearCliente2.html:22
+#: apps/Usuarios/templates/Usuarios/ListaAprobar.html:30
+#: apps/Usuarios/templates/Usuarios/ListaAprobarA.html:29
+#: apps/Usuarios/templates/Usuarios/ListaClientes.html:30
+msgid "Apellido"
+msgstr "Sobrenome"
 
 #: apps/Usuarios/templates/Usuarios/CrearCliente2.html:25
 msgid "Persona natural"
@@ -78,6 +61,14 @@ msgstr "Pessoa jurídica "
 #: apps/Usuarios/templates/Usuarios/opciones.html:32
 msgid "Cedula"
 msgstr "carteira de identidade"
+
+#: apps/Usuarios/templates/Usuarios/CrearCliente2.html:40
+#: apps/Usuarios/templates/Usuarios/ListaAprobar.html:31
+#: apps/Usuarios/templates/Usuarios/ListaAprobarA.html:30
+#: apps/Usuarios/templates/Usuarios/ListaClientes.html:31
+#: apps/Usuarios/templates/Usuarios/ListaEmpleados.html:31
+msgid "Correo"
+msgstr "e-mail"
 
 #: apps/Usuarios/templates/Usuarios/CrearCliente2.html:41
 #: apps/Usuarios/templates/Usuarios/ListaAprobar.html:32
@@ -214,9 +205,7 @@ msgstr "Aleije usuário"
 #, python-format
 msgid ""
 "Está seguro que desea desactivar al usuario con cédula %(usuario.cedula)s?"
-msgstr ""
-"Está seguro que quer desativar o usuário com o de carteira de identidade "
-"%(usuario.cedula)s?"
+msgstr "Está seguro que quer desativar o usuário com o de carteira de identidade %(usuario.cedula)s?"
 
 #: apps/Usuarios/templates/Usuarios/ListaEmpleados.html:74
 #: apps/Usuarios/templates/Usuarios/opciones.html:52
@@ -408,7 +397,6 @@ msgstr "403 Permissão nega-se"
 #: templates/403.html:26
 msgid "Oops! No tienes permiso para acceder a esta pagina"
 msgstr "Ôpa! Não tem permissão de acessar esta página"
-
 #: templates/403.html:28
 msgid "Vuelve a la pagina de inicio"
 msgstr "Para trás à home page"
