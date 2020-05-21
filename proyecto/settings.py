@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import json
+import dj_database_url 
 
 from django.core.exceptions import ImproperlyConfigured
 
@@ -42,7 +43,8 @@ SECRET_KEY = get_secret("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['herokuproyectowww.herokuapp.com']
 
 AUTH_USER_MODEL = 'Usuarios.Empleados'
 
@@ -68,6 +70,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -156,12 +159,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static_collected')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
+
+print(STATIC_ROOT)
 
 LOGIN_REDIRECT_URL = 'usuarios:home'
 LOGIN_URL = 'usuarios:login'
@@ -183,3 +188,9 @@ EMAIL_HOST_USER = 'electrisoftwww@gmail.com'
 EMAIL_HOST_PASSWORD = 'proyectowww'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
+
+
+#Configuration regarding Heroku configuration
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
