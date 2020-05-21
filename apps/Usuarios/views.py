@@ -17,7 +17,7 @@ def home(request):
 def landing(request):
     return render(request, 'landing.html', {})
 
-@permission_required('usuarios.view_usuario', login_url=None, raise_exception=True)
+#@permission_required('usuarios.view_usuario', login_url=None, raise_exception=True)
 def CrearEmpleado(request):
     if request.method == 'POST':
         form = FormularioRegistroEmpleados(request.POST, request.FILES)
