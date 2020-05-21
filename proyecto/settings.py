@@ -44,7 +44,7 @@ SECRET_KEY = get_secret("SECRET_KEY")
 DEBUG = True
 
 #ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['herokuproyectowww.herokuapp.com']
+ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'Usuarios.Empleados'
 
@@ -70,7 +70,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -191,6 +191,6 @@ EMAIL_PORT = 587
 
 
 #Configuration regarding Heroku configuration
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# prod_db  =  dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(prod_db)
