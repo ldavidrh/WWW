@@ -1,0 +1,554 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-20 19:03-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/Usuarios/models.py:23
+#, python-format
+msgid "%(value)s no es válido"
+msgstr ""
+
+#: apps/Usuarios/models.py:31
+#, python-format
+msgid "%(value)s es muy largo"
+msgstr ""
+
+#: apps/Usuarios/models.py:38
+#, fuzzy
+#| msgid "Cedula"
+msgid "Cédula"
+msgstr "carteira de identidade"
+
+#: apps/Usuarios/models.py:39
+#: apps/Usuarios/templates/Usuarios/CrearCliente2.html:40
+#: apps/Usuarios/templates/Usuarios/ListaAprobar.html:31
+#: apps/Usuarios/templates/Usuarios/ListaAprobarA.html:30
+#: apps/Usuarios/templates/Usuarios/ListaClientes.html:31
+#: apps/Usuarios/templates/Usuarios/ListaEmpleados.html:31
+msgid "Correo"
+msgstr "e-mail"
+
+#: apps/Usuarios/models.py:40
+#: apps/Usuarios/templates/Usuarios/CrearCliente2.html:21
+#: apps/subestaciones/templates/subestaciones/consultar.html:21
+#: apps/subestaciones/templates/subestaciones/consultar.html:68
+msgid "Nombre"
+msgstr "Nome"
+
+#: apps/Usuarios/models.py:41
+#: apps/Usuarios/templates/Usuarios/CrearCliente2.html:22
+#: apps/Usuarios/templates/Usuarios/ListaAprobar.html:30
+#: apps/Usuarios/templates/Usuarios/ListaAprobarA.html:29
+#: apps/Usuarios/templates/Usuarios/ListaClientes.html:30
+msgid "Apellido"
+msgstr "Sobrenome"
+
+#: apps/Usuarios/templates/Usuarios/CrearCliente2.html:9
+msgid "crear cliente"
+msgstr "Crie cliente"
+
+#: apps/Usuarios/templates/Usuarios/CrearCliente2.html:18
+msgid "Solicitar Servicio"
+msgstr "Serviço de pedido "
+
+#: apps/Usuarios/templates/Usuarios/CrearCliente2.html:25
+msgid "Persona natural"
+msgstr "Pessoa física"
+
+#: apps/Usuarios/templates/Usuarios/CrearCliente2.html:26
+msgid "Persona juridica"
+msgstr "Pessoa jurídica "
+
+#: apps/Usuarios/templates/Usuarios/CrearCliente2.html:39
+#: apps/Usuarios/templates/Usuarios/opciones.html:32
+msgid "Cedula"
+msgstr "carteira de identidade"
+
+#: apps/Usuarios/templates/Usuarios/CrearCliente2.html:41
+#: apps/Usuarios/templates/Usuarios/ListaAprobar.html:32
+#: apps/Usuarios/templates/Usuarios/ListaAprobarA.html:31
+#: apps/Usuarios/templates/Usuarios/ListaClientes.html:32
+msgid "Telefono"
+msgstr "Telefone"
+
+#: apps/Usuarios/templates/Usuarios/CrearCliente2.html:42
+msgid "Dirrecion"
+msgstr "Endereço"
+
+#: apps/Usuarios/templates/Usuarios/CrearCliente2.html:46
+msgid "Solicitar"
+msgstr "Apresentar-se"
+
+#: apps/Usuarios/templates/Usuarios/CrearUsuario.html:13
+msgid "Registra un nuevo empleado"
+msgstr "Registre um novo empregado"
+
+#: apps/Usuarios/templates/Usuarios/CrearUsuario.html:34
+msgid "Agregar"
+msgstr "Acrescentar"
+
+#: apps/Usuarios/templates/Usuarios/EditarEmpleado.html:10
+#: apps/subestaciones/templates/subestaciones/actualizar.html:22
+#: apps/subestaciones/templates/subestaciones/consultar.html:53
+#: apps/transformadores/templates/transformadores/actualizar.html:23
+#: apps/transformadores/templates/transformadores/consultar.html:54
+msgid "Actualizar"
+msgstr "Envio"
+
+#: apps/Usuarios/templates/Usuarios/ListaAprobar.html:10
+msgid "Listado de solicitudes de servicio"
+msgstr "Lista de pedido de serviço"
+
+#: apps/Usuarios/templates/Usuarios/ListaAprobar.html:14
+msgid "table_Search"
+msgstr "Procure mesa"
+
+#: apps/Usuarios/templates/Usuarios/ListaAprobar.html:14
+#: apps/Usuarios/templates/Usuarios/ListaClientes.html:14
+#: templates/base.html:60
+msgid "Search"
+msgstr "Procurar"
+
+#: apps/Usuarios/templates/Usuarios/ListaAprobar.html:27
+#: apps/Usuarios/templates/Usuarios/ListaAprobarA.html:26
+#: apps/Usuarios/templates/Usuarios/ListaClientes.html:27
+msgid "Cédula o NIT"
+msgstr "Cartão de carteira de identidade ou número de identificação fiscal"
+
+#: apps/Usuarios/templates/Usuarios/ListaAprobar.html:28
+#: apps/Usuarios/templates/Usuarios/ListaAprobarA.html:27
+#: apps/Usuarios/templates/Usuarios/ListaClientes.html:28
+msgid "Tipo de persona"
+msgstr "Tipo de pessoa"
+
+#: apps/Usuarios/templates/Usuarios/ListaAprobar.html:29
+#: apps/Usuarios/templates/Usuarios/ListaAprobarA.html:28
+#: apps/Usuarios/templates/Usuarios/ListaClientes.html:29
+msgid "Nombre o razón social"
+msgstr "Nome ou razão de negócios"
+
+#: apps/Usuarios/templates/Usuarios/ListaAprobar.html:33
+#: apps/Usuarios/templates/Usuarios/ListaAprobarA.html:32
+#: apps/Usuarios/templates/Usuarios/ListaClientes.html:33
+msgid "Dirección"
+msgstr "Endereço"
+
+#: apps/Usuarios/templates/Usuarios/ListaAprobar.html:34
+#: apps/Usuarios/templates/Usuarios/ListaAprobarA.html:33
+#: apps/Usuarios/templates/Usuarios/ListaEmpleados.html:33
+msgid "Opciones"
+msgstr "Opções"
+
+#: apps/Usuarios/templates/Usuarios/ListaAprobar.html:49
+#: apps/Usuarios/templates/Usuarios/ListaAprobarA.html:48
+#: apps/Usuarios/templates/Usuarios/ListaEmpleados.html:75
+msgid "Aceptar"
+msgstr "Aceitar"
+
+#: apps/Usuarios/templates/Usuarios/ListaAprobar.html:52
+#: apps/Usuarios/templates/Usuarios/ListaAprobarA.html:51
+msgid "Rechazar"
+msgstr "Rejeitar"
+
+#: apps/Usuarios/templates/Usuarios/ListaAprobarA.html:9
+msgid "Listado de solicitudes de servicio clientes antiguos"
+msgstr "A lista do serviço solicita velhos clientes"
+
+#: apps/Usuarios/templates/Usuarios/ListaAprobarA.html:13
+#: apps/Usuarios/templates/Usuarios/ListaClientes.html:14
+msgid "Table_Search"
+msgstr "Procure a mesa"
+
+#: apps/Usuarios/templates/Usuarios/ListaEmpleados.html:9
+msgid "Listado de empleados"
+msgstr "Empregado que se inclina"
+
+#: apps/Usuarios/templates/Usuarios/ListaEmpleados.html:27
+#: apps/subestaciones/templates/subestaciones/consultar.html:20
+#: apps/subestaciones/templates/subestaciones/consultar.html:67
+msgid "ID"
+msgstr "ID"
+
+#: apps/Usuarios/templates/Usuarios/ListaEmpleados.html:28
+msgid "Rol"
+msgstr "Papel"
+
+#: apps/Usuarios/templates/Usuarios/ListaEmpleados.html:29
+msgid "Nombres"
+msgstr "Nomes"
+
+#: apps/Usuarios/templates/Usuarios/ListaEmpleados.html:30
+msgid "Apellidos"
+msgstr "Sobrenomes"
+
+#: apps/Usuarios/templates/Usuarios/ListaEmpleados.html:32
+msgid "Estado"
+msgstr "Estado"
+
+#: apps/Usuarios/templates/Usuarios/ListaEmpleados.html:59
+#: apps/subestaciones/templates/subestaciones/consultar.html:46
+#: apps/transformadores/templates/transformadores/consultar.html:47
+msgid "Desactivar"
+msgstr "Desactivate"
+
+#: apps/Usuarios/templates/Usuarios/ListaEmpleados.html:67
+msgid "Desactivar usuario"
+msgstr "Aleije usuário"
+
+#: apps/Usuarios/templates/Usuarios/ListaEmpleados.html:71
+#, python-format
+msgid ""
+"Está seguro que desea desactivar al usuario con cédula %(usuario.cedula)s?"
+msgstr ""
+"Está seguro que quer desativar o usuário com o de carteira de identidade "
+"%(usuario.cedula)s?"
+
+#: apps/Usuarios/templates/Usuarios/ListaEmpleados.html:74
+#: apps/Usuarios/templates/Usuarios/opciones.html:52
+msgid "Cancelar"
+msgstr "Cancelar"
+
+#: apps/Usuarios/templates/Usuarios/ListaEmpleados.html:87
+msgid "Activar"
+msgstr "Ativar"
+
+#: apps/Usuarios/templates/Usuarios/ListaEmpleados.html:92
+msgid "Editar"
+msgstr "Editar"
+
+#: apps/Usuarios/templates/Usuarios/Perfil.html:75
+msgid "Followers"
+msgstr "Seguidores"
+
+#: apps/Usuarios/templates/Usuarios/Perfil.html:78
+msgid "Following"
+msgstr "O seguinte"
+
+#: apps/Usuarios/templates/Usuarios/Perfil.html:81
+msgid "Friends"
+msgstr "Amigos"
+
+#: apps/Usuarios/templates/Usuarios/login.html:35
+msgid "Inicio de Sesion"
+msgstr "Senha de entrada"
+
+#: apps/Usuarios/templates/Usuarios/login.html:42 templates/landing.html:60
+msgid "Ingresar"
+msgstr "Entrar"
+
+#: apps/Usuarios/templates/Usuarios/login.html:49
+msgid "Olvide mi contraseña"
+msgstr "Esqueci a minha senha"
+
+#: apps/Usuarios/templates/Usuarios/login2.html:9
+msgid "Login"
+msgstr "Senha de entrada"
+
+#: apps/Usuarios/templates/Usuarios/login2.html:15
+msgid "Iniciar Sesión"
+msgstr "Senha de entrada"
+
+#: apps/Usuarios/templates/Usuarios/login2.html:19
+msgid "Iniciar sesion"
+msgstr "Senha de entrada"
+
+#: apps/Usuarios/templates/Usuarios/login2.html:23
+msgid "Olvide mi Contraseña?"
+msgstr "Esqueceu a minha senha?"
+
+#: apps/Usuarios/templates/Usuarios/logout.html:35
+msgid "Fin de Sesión"
+msgstr "Desligar"
+
+#: apps/Usuarios/templates/Usuarios/logout.html:37
+msgid "¡Cerraste sesión!"
+msgstr "Desliga-se! "
+
+#: apps/Usuarios/templates/Usuarios/logout.html:39
+msgid "Vuelve a iniciar sesión"
+msgstr "Assine atrás em"
+
+#: apps/Usuarios/templates/Usuarios/logout.html:42
+msgid " Ó "
+msgstr "O"
+
+#: apps/Usuarios/templates/Usuarios/logout.html:45
+msgid "Vuelve al inicio"
+msgstr "Voltar ao topo da página "
+
+#: apps/Usuarios/templates/Usuarios/opciones.html:15
+msgid "Cliente nuevo"
+msgstr "Novo cliente "
+
+#: apps/Usuarios/templates/Usuarios/opciones.html:19
+msgid "Cliente ya registrado"
+msgstr "Cliente já registrado"
+
+#: apps/Usuarios/templates/Usuarios/opciones.html:24
+msgid "Solicitud cliente antiguo"
+msgstr "Velho pedido de cliente "
+
+#: apps/Usuarios/templates/Usuarios/opciones.html:44
+msgid "Direccion"
+msgstr "Endereço"
+
+#: apps/Usuarios/templates/Usuarios/opciones.html:53
+msgid "Enviar"
+msgstr "Lançar"
+
+#: apps/facturas/templates/facturas/GenerarFacturas.html:10
+msgid "Generar facturas del corte"
+msgstr "Gere faturas de redução "
+
+#: apps/facturas/templates/facturas/GenerarFacturas.html:14
+msgid "Generar y enviar"
+msgstr "Gere e envie"
+
+#: apps/subestaciones/templates/subestaciones/actualizar.html:9
+msgid "Actualizar subestacion"
+msgstr "Subestação de atualização"
+
+#: apps/subestaciones/templates/subestaciones/consultar.html:10
+#: templates/base.html:245
+msgid "Subestaciones"
+msgstr "Subestações"
+
+#: apps/subestaciones/templates/subestaciones/consultar.html:22
+#: apps/subestaciones/templates/subestaciones/consultar.html:69
+#: apps/transformadores/templates/transformadores/consultar.html:21
+#: apps/transformadores/templates/transformadores/consultar.html:69
+msgid "Latitud"
+msgstr "Latitude"
+
+#: apps/subestaciones/templates/subestaciones/consultar.html:23
+#: apps/subestaciones/templates/subestaciones/consultar.html:70
+#: apps/transformadores/templates/transformadores/consultar.html:22
+#: apps/transformadores/templates/transformadores/consultar.html:70
+msgid "Longitud"
+msgstr "Lenght"
+
+#: apps/subestaciones/templates/subestaciones/consultar.html:24
+#: apps/subestaciones/templates/subestaciones/consultar.html:71
+#: apps/transformadores/templates/transformadores/consultar.html:25
+#: apps/transformadores/templates/transformadores/consultar.html:73
+msgid "Activo"
+msgstr "Ativo"
+
+#: apps/subestaciones/templates/subestaciones/consultar.html:25
+#: apps/subestaciones/templates/subestaciones/consultar.html:72
+#: apps/transformadores/templates/transformadores/consultar.html:26
+#: apps/transformadores/templates/transformadores/consultar.html:74
+msgid "Acciones"
+msgstr "Ações"
+
+#: apps/transformadores/templates/transformadores/actualizar.html:10
+msgid "Actualizar transformador"
+msgstr "Transformador de upgrade "
+
+#: apps/transformadores/templates/transformadores/consultar.html:10
+#: templates/base.html:269
+msgid "Transformadores"
+msgstr "Transformadores"
+
+#: apps/transformadores/templates/transformadores/consultar.html:20
+#: apps/transformadores/templates/transformadores/consultar.html:68
+msgid "Serial"
+msgstr "Serie"
+
+#: apps/transformadores/templates/transformadores/consultar.html:23
+#: apps/transformadores/templates/transformadores/consultar.html:71
+msgid "Devanado"
+msgstr "Curva"
+
+#: apps/transformadores/templates/transformadores/consultar.html:24
+#: apps/transformadores/templates/transformadores/consultar.html:72
+msgid "Subestacion"
+msgstr "Subestações"
+
+#: apps/transformadores/templates/transformadores/registrar.html:10
+msgid "Registrar transformador"
+msgstr "Transformador de registro"
+
+#: apps/transformadores/templates/transformadores/registrar.html:23
+#: templates/base.html:252 templates/base.html:276
+msgid "Registrar"
+msgstr "Inscrever-se"
+
+#: proyecto/settings.py:83
+msgid "English"
+msgstr "Inglês"
+
+#: proyecto/settings.py:84
+msgid "Portuguese"
+msgstr "Português"
+
+#: proyecto/settings.py:85
+msgid "Spanish"
+msgstr "Espanhol"
+
+#: templates/403.html:7
+msgid "403 Permiso denegado"
+msgstr "403 Permissão nega-se"
+
+#: templates/403.html:26
+msgid "Oops! No tienes permiso para acceder a esta pagina"
+msgstr "Ôpa! Não tem permissão de acessar esta página"
+
+#: templates/403.html:28
+msgid "Vuelve a la pagina de inicio"
+msgstr "Para trás à home page"
+
+#: templates/403.html:28
+msgid "aqui"
+msgstr "Aqui"
+
+#: templates/base.html:52
+msgid "Home"
+msgstr "Página principal"
+
+#: templates/base.html:75
+msgid "Cerrar sesión"
+msgstr "Desligar"
+
+#: templates/base.html:82
+msgid "Iniciar sesión"
+msgstr "Logar"
+
+#: templates/base.html:88
+msgid "Solicite nuestros servicios"
+msgstr "Solicite os nossos serviços"
+
+#: templates/base.html:100
+msgid "Notifications"
+msgstr "Notificações"
+
+#: templates/base.html:103
+msgid "new messages"
+msgstr "Novas mensagens "
+
+#: templates/base.html:108
+msgid "friend requests"
+msgstr "Amigo pedidos"
+
+#: templates/base.html:113
+msgid "new reports"
+msgstr "Novos relatórios"
+
+#: templates/base.html:117
+msgid "See All Notifications"
+msgstr "Ver todas as notificações"
+
+#: templates/base.html:158
+msgid "Menu"
+msgstr "Cardápio"
+
+#: templates/base.html:164
+msgid "Reportes"
+msgstr "Relatórios"
+
+#: templates/base.html:172
+msgid "Reporte 1"
+msgstr "Relatório 1"
+
+#: templates/base.html:178
+msgid "Reporte2"
+msgstr "Relatório 2"
+
+#: templates/base.html:184
+msgid "Reporte3"
+msgstr "Relatório 3"
+
+#: templates/base.html:190
+msgid "Reporte4"
+msgstr "Relatório 4"
+
+#: templates/base.html:207
+msgid "Crear Empleados"
+msgstr "Criação de empregados"
+
+#: templates/base.html:214
+msgid "Listar empleados"
+msgstr "Lista de empregados"
+
+#: templates/base.html:222
+msgid "Solicitudes"
+msgstr "Pedidos"
+
+#: templates/base.html:229
+msgid "Clientes nuevos"
+msgstr "Novos clientes"
+
+#: templates/base.html:235
+msgid "Clientes antiguos"
+msgstr "velhos clients"
+
+#: templates/base.html:258 templates/base.html:282
+msgid "Consultar"
+msgstr "Consultar"
+
+#: templates/base.html:294
+msgid "Lista Clientes"
+msgstr "Lista de cliente"
+
+#: templates/landing.html:61
+msgid "Solicitar servicio"
+msgstr "Serviço de pedido"
+
+#: templates/landing.html:71
+msgid "El mejor servicio de la ciudad"
+msgstr "O melhor serviço em cidade"
+
+#: templates/landing.html:72
+msgid "Trabajamos para mejorar el pais"
+msgstr "Trabalhamos para melhorar o país"
+
+#: templates/landing.html:73
+msgid "Consulte su factura aqui"
+msgstr "Consulte a sua fatura aqui"
+
+#: templates/landing.html:78
+msgid "Bienvenidos a Electrisoft"
+msgstr "Seja bem-vindo a Electrisoft"
+
+#: templates/landing.html:79
+msgid "Somos la empresa que le da energia a tu vida"
+msgstr "Somos a companhia que energiza a sua vida"
+
+#: templates/landing.html:83
+msgid "Lo último de nuestra empresa"
+msgstr "O último da nossa companhia"
+
+#: templates/landing.html:87
+msgid "Objetivos"
+msgstr "Objectives"
+
+#: templates/landing.html:91
+msgid "Cero fallas"
+msgstr "Falta nula"
+
+#: templates/landing.html:97
+msgid "Servicios"
+msgstr "Serviços"
+
+#: templates/landing.html:101
+msgid "Preguntas frecuentes"
+msgstr "Perguntas frequentemente feitas"
+
+#: templates/landing.html:105
+msgid "Servicio tecnico"
+msgstr "Serviço técnico "
