@@ -14,8 +14,9 @@ __pycache__/
 
 
 ## Migrations ##
-*/*/migrations/
-*/migrations/
+##Not ignored for 
+#*/*/migrations/
+#*/migrations/
 
 static_collected/
 
