@@ -21,24 +21,24 @@ from django.core.exceptions import ImproperlyConfigured
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-with open("%s/secrets.json" % (BASE_DIR)) as f:
-    secrets = json.loads(f.read())
+# with open("%s/secrets.json" % (BASE_DIR)) as f:
+#     secrets = json.loads(f.read())
 
 
-def get_secret(setting, secrets=secrets):
-    try:
-        return secrets[setting]
+# def get_secret(setting, secrets=secrets):
+#     try:
+#         return secrets[setting]
 
-    except KeyError:
-        error_msg = "Set the {0} enviroment variable".format(setting)
-        raise ImproperlyConfigured(error_msg)
+#     except KeyError:
+#         error_msg = "Set the {0} enviroment variable".format(setting)
+#         raise ImproperlyConfigured(error_msg)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_secret("SECRET_KEY")
+SECRET_KEY = 'hm9^o17kd1wzv_!um@%prdzn+ov-444$$lxx9#+@c@0baf#+h_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -105,20 +105,20 @@ WSGI_APPLICATION = 'proyecto.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASE_NAME = get_secret("DATABASE_NAME")
-DATABASE_USER = get_secret("DATABASE_USER")
-DATABASE_PASSWORD = get_secret("DATABASE_PASSWORD")
-DATABASE_HOST = get_secret("DATABASE_HOST")
-DATABASE_PORT = get_secret("DATABASE_PORT")
+# DATABASE_NAME = get_secret("DATABASE_NAME")
+# DATABASE_USER = get_secret("DATABASE_USER")
+# DATABASE_PASSWORD = get_secret("DATABASE_PASSWORD")
+# DATABASE_HOST = get_secret("DATABASE_HOST")
+# DATABASE_PORT = get_secret("DATABASE_PORT")
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': DATABASE_NAME,
-        'USER': DATABASE_USER,
-        'PASSWORD': DATABASE_PASSWORD,
-        'HOST': DATABASE_HOST,
-        'PORT': DATABASE_PORT,
+        'NAME': 'd7fl8uad3ajfs2',
+        'USER': 'kfumzesbyrwvqe',
+        'PASSWORD': '898b8137e3f226950beb5c31baf0b46fc1242d3da785b81cbc954695fd053e40',
+        'HOST': 'ec2-54-86-170-8.compute-1.amazonaws.com',
+        'PORT': 5432,
     }
 }
 
