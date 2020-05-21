@@ -35,10 +35,10 @@ def validar_entero(value):
 
 class Persona(AbstractUser):
     id =  models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
-    cedula = models.BigIntegerField(validators=[validar_entero], verbose_name=_('Cédula'), unique=True)
-    email = models.EmailField(_('Correo'), unique=True)
-    first_name = models.CharField(validators=[validar_string], blank=True, max_length=30, verbose_name=_('Nombre'))
-    last_name = models.CharField(validators=[validar_string], blank=True, max_length=150, verbose_name=_('Apellido'))
+    cedula = models.BigIntegerField(validators=[validar_entero], verbose_name='Cédula', unique=True)
+    email = models.EmailField(('Correo'), unique=True)
+    first_name = models.CharField(validators=[validar_string], blank=True, max_length=30, verbose_name='Nombre')
+    last_name = models.CharField(validators=[validar_string], blank=True, max_length=150, verbose_name='Apellido')
 
     class Meta:
         ordering = ['first_name', 'last_name']
