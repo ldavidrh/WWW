@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 {% block content %}
+{% load i18n %}
+
 <div class="row">
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Generar facturas del corte</h3>
+        <h3 class="card-title">{% blocktrans %}Generar facturas del corte{% endblocktrans %}</h3>
       </div>
       <!-- /.card-header -->
       <div class="card-body table-responsive p-0" style="height: 300px;">
-        <button type="button" class="btn btn-block btn-outline-success btn-lg" onclick="window.location.assign('{% url 'facturas:generar' %}')">Generar y enviar</button>
+        <button type="button" class="btn btn-block btn-outline-success btn-lg" onclick="window.location.assign('{% url 'facturas:generar' %}')">{% blocktrans %}Generar y enviar{% endblocktrans %}</button>
       </div>
       <!-- /.card-body -->
     </div>

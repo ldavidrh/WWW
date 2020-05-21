@@ -1,25 +1,26 @@
 {% load static %}
 {% load bootstrap4 %}
+{% load i18n %}
 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>{% blocktrans %}Login{% endblocktrans %}</title>
     <link rel="stylesheet" href="{% static 'dist/css/estilos2.css' %}">
 </head>
 <body>
     <div class="contenedor-form">
         <div class="formulario">
-            <h2>Iniciar Sesión</h2>
+            <h2>{% blocktrans %}Iniciar Sesión{% endblocktrans %}</h2>
             <form method="post">
                 {% csrf_token %}
                 {% bootstrap_form form %}
-                <input type="submit" value="Iniciar Sesión">
+                <input type="submit" value="{% trans "Iniciar sesion" %}">
             </form>
         </div>
         <div class="reset-password">
-            <a href="#">Olvide mi Contraseña?</a>
+            <a href="#">{% blocktrans %}Olvide mi Contraseña?{% endblocktrans %}</a>
         </div>
     </div>
 

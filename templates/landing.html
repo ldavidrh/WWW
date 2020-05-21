@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load i18n %}
 <html lang="es">
     <head>
         <title>Electrisoft</title>
@@ -38,51 +39,70 @@
                 <input type="checkbox", id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
                 <nav class="menu">
-                    <a href="{% url 'usuarios:login' %}">Ingresar</a>
-                    <a href="{% url 'usuarios:Opciones' %}">Solicitar servicio</a>
+
+                    
+                <!-- TRANSLATE FORM -->
+                <form action="{% url 'set_language' %}" method="post">
+                        {% csrf_token %}
+                        <input name="next" type="hidden" value="{{ redirect_to }}" />
+                        <select name="language">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% get_available_languages as LANGUAGES %}
+                            {% for lang in LANGUAGES %}
+                            <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                            {{ lang.1 }} ({{ lang.0 }})
+                        </option>
+                        {% endfor %}
+                        </select>
+                        <input type="submit" value="Go" />
+                        </form>
+
+                    <a href="{% url 'usuarios:login' %}">{% blocktrans %}Ingresar{% endblocktrans %}</a>
+                    <a href="{% url 'usuarios:opciones' %}">{% blocktrans %}Solicitar servicio{% endblocktrans %}</a>
                 </nav>
             </div>
+            
         </header>
 
         <main>
             <section id="banner">
                 <img src="static/dist/img/baner.jpg">
                 <div class="contenedor">
-                    <h2>El mejor servicio de la ciudad</h2>
-                    <p>Trabajamos para mejorar el pais</p>
-                    <a href="#">Consulte su factura aqui</a>
+                    <h2>{% blocktrans %}El mejor servicio de la ciudad{% endblocktrans %}</h2>
+                    <p>{% blocktrans %}Trabajamos para mejorar el pais{% endblocktrans %}</p>
+                    <a href="#">{% blocktrans %}Consulte su factura aqui{% endblocktrans %}</a>
                 </div>
             </section>
 
             <section id="Bienvenidos">
-                <h2>Bienvenidos a Electrisoft</h2>
-                <p>Somos la empresa que le da energia a tu vida</p>
+                <h2>{% blocktrans %}Bienvenidos a Electrisoft{% endblocktrans %}</h2>
+                <p>{% blocktrans %}Somos la empresa que le da energia a tu vida{% endblocktrans %}</p>
             </section>
 
             <section id="blog">
-                <h3>Lo último de nuestra empresa</h3>
+                <h3>{% blocktrans %}Lo último de nuestra empresa{% endblocktrans %}</h3>
                 <div class="contenedor">
                     <article>
                         <img src="static/dist/img/objetivos.jpg">
-                        <h4>Objetivos</h4>
+                        <h4>{% blocktrans %}Objetivos{% endblocktrans %}</h4>
                     </article>
                     <article>
                         <img src="static/dist/img/servicio.jpg">
-                        <h4>Cero fallas</h4>
+                        <h4>{% blocktrans %}Cero fallas{% endblocktrans %}</h4>
                     </article>
                 </div>
             </section>
 
             <section id="info">
-                <h3>Servicios</h3>
+                <h3>{% blocktrans %}Servicios{% endblocktrans %}</h3>
                 <div class="contenedor">
                     <div class="info-serv">
                         <img src="static/dist/img/dudas.jpg" >
-                        <h4>Preguntas frecuentes</h4>
+                        <h4>{% blocktrans %}Preguntas frecuentes{% endblocktrans %}</h4>
                     </div>
                     <div class="info-serv">
                         <img src="static/dist/img/servicio tecnico.jpg">
-                        <h4>Servicio tecnico</h4>
+                        <h4>{% blocktrans %}Servicio tecnico{% endblocktrans %}</h4>
                     </div>
                 </div>
             </section>
