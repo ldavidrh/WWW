@@ -52,8 +52,7 @@
                                             {% if total %}
                                                 <h2>Total a pagar {{total}}</h2>
                                             {% endif %}
-                                        </div> 
-                                        <input type="button" name="previous" class="previous action-button-previous" value="Atrás" /> 
+                                        </div>  
                                         <input type="button" name="next" class="next action-button" value="Siguiente" />
                                     </fieldset>
 
@@ -67,10 +66,10 @@
                                                 </select>
                                             </div>
                                             <div id="tc">
-                                                <label class="pay">Nombre del propietario*</label> <input type="text" name="holdername" placeholder="" />
+                                                <label class="pay">Nombre del propietario*</label> <input id="nombreT" type="text" name="holdername" placeholder="" />
                                                 <div class="row">
-                                                    <div class="col-9"> <label class="pay">Número*</label> <input type="number" name="cardno" placeholder="" /> </div>
-                                                    <div class="col-3"> <label class="pay">CVC*</label> <input type="number" name="cvcpwd" placeholder="***" /> </div>
+                                                    <div class="col-9"> <label class="pay">Número*</label> <input id="no" type="number" name="cardno" placeholder="" /> </div>
+                                                    <div class="col-3"> <label class="pay">CVC*</label> <input id="cvc" type="number" name="cvcpwd" placeholder="***" /> </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-3"> <label class="pay">Fecha vencimiento*</label> </div>
@@ -90,15 +89,15 @@
                                                             <option>Noviembre</option>
                                                             <option>Diciembre</option>
                                                         </select> 
-                                                        <div class="col-4"><input type="number" name="cvcpwd" placeholder="Año" maxlength=4 /></div>
+                                                        <div class="col-4"><input id="año" type="number" name="cvcpwd" placeholder="Año" maxlength=4 /></div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div id="banco">
-                                                <label class="pay">Nombre completo*</label> <input type="text" name="holdername" placeholder="" />
+                                                <label class="pay">Nombre completo*</label> <input id="nombre" type="text" name="holdername" placeholder="" required="required"/>
                                                 <div class="row">
-                                                    <div class="col-6"> <label class="pay">Email*</label> <input type="email" name="cardno" placeholder="" /> </div>
-                                                    <div class="col-6"> <label class="pay">Cédula*</label> <input type="number" name="cvcpwd" placeholder="" /> </div>
+                                                    <div class="col-6"> <label class="pay">Email*</label> <input id="email" type="email" name="cardno" placeholder="" required="required"/> </div>
+                                                    <div class="col-6"> <label class="pay">Cédula*</label> <input id="cedula" type="number" name="cvcpwd" placeholder="" required="required"/> </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-3"> <label class="pay">Banco*</label> </div>
@@ -214,9 +213,24 @@
                     if(op=="banco"){
                         $('#banco').show();
                         $('#tc').hide();
+                        $('#nombreT').attr('required', false);
+                        $('#no').attr('required', false);
+                        $('#cvc').attr('required', false);
+                        $('#año').attr('required', false);
+                        $('#nombre').attr('required', true);
+                        $('#email').attr('required', true);
+                        $('#cedula').attr('required', true);
+
                     }else{
                         $('#banco').hide();
                         $('#tc').show();
+                        $('#nombreT').attr('required', true);
+                        $('#no').attr('required', true);
+                        $('#cvc').attr('required', true);
+                        $('#año').attr('required', true);
+                        $('#nombre').attr('required', false);
+                        $('#email').attr('required', false);
+                        $('#cedula').attr('required', false);
                     }						
                 });
             });

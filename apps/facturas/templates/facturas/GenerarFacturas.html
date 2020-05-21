@@ -1,19 +1,23 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 {% block content %}
-<div class="row">
-  <div class="col-12">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Generar facturas del corte</h3>
-      </div>
-      <!-- /.card-header -->
-      <div class="card-body table-responsive p-0" style="height: 300px;">
-        <button type="button" class="btn btn-block btn-outline-success btn-lg" onclick="window.location.assign('{% url 'facturas:generar' %}')">Generar y enviar</button>
-      </div>
-      <!-- /.card-body -->
+  <div class="row">
+    <div class="col-12">  
+      <h1>Las facturas solo se pueden generan el 28 de cada mes</h1>  
+      <h2>Fecha actual: {{hoy}}</h2>
+      {% if bandera %}
+        <button type="button" class="btn btn-outline-success btn-lg" onclick="desactiva_enlace(this); window.location.assign('{% url 'facturas:generar' %}')">Generar y enviar</button>  
+      {% else %}
+        <button type="button" class="btn btn-outline-success btn-lg" disabled="disabled" onclick="desactiva_enlace(this); window.location.assign('{% url 'facturas:generar' %}')">Generar y enviar</button>
+      {% endif %}
     </div>
-    <!-- /.card -->
   </div>
-</div>
 {% endblock content %}
+{% block js%}
+<script>
+  function desactiva_enlace(enlace){
+    enlace.disabled='disabled';
+  }
+</script>
+</script>
+{% endblock js %}

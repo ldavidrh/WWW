@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.db import transaction
 from django.contrib import messages
 from apps.Usuarios.models import * 
 from apps.api.models import * 
@@ -14,59 +15,84 @@ from decimal import Decimal
 
 def Menu(request):
 
-    return render(request, 'facturas/GenerarFacturas.html', {})
+    hoy =  date.today()
+    dia = hoy.day
+
+    if dia == 28:
+        facturas = Factura.objects.filter(fecha=hoy)
+        if len(facturas) == 0 or len(facturas) == None:
+            bandera = True
+        else:
+            bandera = False    
+    else:
+        bandera = False
+
+    return render(request, 'facturas/GenerarFacturas.html', {'hoy': hoy, 'bandera': bandera })
 
 
 def GenerarFacturas(request):
 
     contratos = Contrato.objects.filter(en_servicio=True)
+    hoy = date.today()
+
 
     for contrato in contratos:
-        
-        #Creamos el consumo
 
-        lectura_anterior = Consumo.objects.filter(contador=contrato.contador).last()
-        ran = randint(200,300)
+        facturas_sin_pagar = Facturas.objects.filter(contrato=contrato, pagada=False)
+        x = len(facturas_sin_pagar)
+        d1 = 0
+        d2 = 0
+        bandera = True
+        crear = True
+        if x == 2:
+            for f in facturas_sin_pagar:
+                if bandera:
+                    d1 = abs(hoy - f.fecha).days
+                else:
+                    d2 = abs(hoy - f.fecha).days
+                bandera = False
+            
+            if d1 > 28 and d2 > 28:
+                f.contrato.en_servicio = False
+                f.save()
+                crear = False
 
-        if lectura_anterior != None:
+        if crear:
+            #Creamos el consumo
+            lectura_anterior = Consumo.objects.filter(contador=contrato.contador).last()
+            ran = randint(200,300)
 
-            lectura_actual = ran + lectura_anterior.lectura_actual
-            consumo = Consumo(contador=contrato.contador, lectura_actual=lectura_actual, lectura_anterior=lectura_anterior.lectura_actual)
-            consumo.save()
+            if lectura_anterior != None:
 
-        else:
-            consumo = Consumo(contador=contrato.contador, lectura_actual=ran, lectura_anterior=0)
-            consumo.save()
+                lectura_actual = ran + lectura_anterior.lectura_actual
+                consumo = Consumo(contador=contrato.contador, lectura_actual=lectura_actual, lectura_anterior=lectura_anterior.lectura_actual)
+                consumo.save()
 
-        #Creamos la diferencia
+            else:
+                consumo = Consumo(contador=contrato.contador, lectura_actual=ran, lectura_anterior=0)
+                consumo.save()
 
-        diferencia = consumo.lectura_actual - consumo.lectura_anterior
+            #Creamos la diferencia
 
-        #Dias de mora
+            diferencia = consumo.lectura_actual - consumo.lectura_anterior
 
-        morosos = Mora.objects.all()
+            #Dias de mora
 
-        cargo = 0
+            cargo = 0
+            
+            #Total
 
-        if morosos != None:
-            for m in morosos:
-                if m.factura.contrato == contrato:
-                    cargo = m.dias_retraso/100 * m.factura.total
+            total = diferencia*550 + cargo
 
+            #Creamos la factura
 
-        #Total
-
-        total = diferencia*550 + cargo
-
-        #Creamos la factura
-
-        factura = Factura(contrato=contrato, consumo=consumo, diferencia=diferencia, cargo_mora=cargo, total=total, pagada=False)
-        factura.save()
+            factura = Factura(contrato=contrato, consumo=consumo, diferencia=diferencia, cargo_mora=cargo, total=total, pagada=False)
+            factura.save()
 
     messages.success(request, 'Facturas creadas exitosamente')
     return redirect('usuarios:home')
 
-
+@transaction.atomic
 def PagoFactura1(request):
     if request.method == 'POST':
         datos = request.POST
@@ -164,7 +190,7 @@ def PagoFactura1(request):
     
     return render(request, "facturas/pago1.html", {})
 
-
+@transaction.atomic
 def PagoFactura2(request):
 
     if request.method == 'POST':
