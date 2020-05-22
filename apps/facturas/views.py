@@ -18,7 +18,7 @@ def Menu(request):
     hoy =  date.today()
     dia = hoy.day
 
-    if dia == 28:
+    if dia == 22:
         facturas = Factura.objects.filter(fecha=hoy)
         if len(facturas) == 0 or len(facturas) == None:
             bandera = True
