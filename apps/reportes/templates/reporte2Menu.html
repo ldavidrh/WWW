@@ -1,0 +1,42 @@
+{% extends "base_tablas.html" %}
+{% load bootstrap4 %}
+{% block content %}
+{% load i18n %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{% blocktrans %}Listado contratos{% endblocktrans %}</h3>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table id="example" class="table table-striped table-bordered data-example">
+                    <thead>
+                        <tr>
+                        <th>{% blocktrans %}No. Contrato{% endblocktrans %}</th>
+                        <th>{% blocktrans %}Cliente{% endblocktrans %}</th>
+                        <th>{% blocktrans %}Dirección{% endblocktrans %}</th>
+                        <th>{% blocktrans %}Estado{% endblocktrans %}</th>
+                        <th>{% blocktrans %}Opciones{% endblocktrans %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contrato in contratos %}  
+                            <tr>
+                            <td>{{contrato.id}}</td>
+                            <td>{{contrato.cliente.first_name}} {{contrato.cliente.last_name}}</td>
+                            <td>{{contrato.direccion}}</td>
+                            <td>{{contrato.en_servicio}}</td> 
+                            <td>   
+                                <a class="btn btn-info btn-sm" href="{% url 'reportes:reporte2' contrato.id %}" style="color: white !important;" data-toggle="tooltip" title="{% trans "Ver reporte" %}">
+                                    <i class="fas fa-chart-bar"></i>
+                                </a>
+                            </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

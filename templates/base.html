@@ -122,27 +122,27 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{% url 'reportes:reporte1' %}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>{% blocktrans %}Reporte 1{% endblocktrans %}</p>
+                    <p>{% blocktrans %}Consumos mensual{% endblocktrans %}</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{% url 'reportes:reporte2Menu' %}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>{% blocktrans %}Reporte2{% endblocktrans %}</p>
+                    <p>{% blocktrans %}Consumos por contrato{% endblocktrans %}</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{% url 'reportes:reporte3' %}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>{% blocktrans %}Reporte3{% endblocktrans %}</p>
+                    <p>{% blocktrans %}Clientes activos{% endblocktrans %}</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{% url 'reportes:reporte4' %}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>{% blocktrans %}Reporte4{% endblocktrans %}</p>
+                    <p>{% blocktrans %}Clientes en morosos{% endblocktrans %}</p>
                   </a>
                 </li>
 
@@ -247,6 +247,14 @@
                 <i class="fas fa-users"></i>
                 <p>
                   {% blocktrans %}Lista Clientes{% endblocktrans %}
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'facturas:menu' %}" class="nav-link">
+                <i class="fas fa-file-invoice"></i>
+                <p>
+                  {% blocktrans %}Facturas{% endblocktrans %}
                 </p>
               </a>
             </li>
