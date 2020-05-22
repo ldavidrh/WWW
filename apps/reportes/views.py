@@ -114,3 +114,11 @@ def switch_mes(argument):
         12: "Diciembre"
     }
     return switcher.get(argument, "Invalid month")
+
+def reporte4(request):
+    clientes_mora = Factura.objects.filter(cargo_mora != 0.0).count()
+
+    clientes = [clientes_mora]
+    base = ['Clientes en mora']
+
+    return render(request, 'reporte4.html', {'clientes': clientes, 'base': base})
