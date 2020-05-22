@@ -243,7 +243,7 @@ def ConsultarFactura(request, idcontrato):
             dif_lectura = f.consumo.lectura_actual - f.consumo.lectura_anterior
             total = dif_lectura*550
             
-            return render(request, 'facturas/invoice.html', {'contrato': contrato, 'facturas': facturas_sin_pagar, 'dif_lectura': dif_lectura, 'subtotal1': total, 'r':r, 'hoy':hoy})
+            return render(request, 'facturas/invoice.html', {'contrato': contrato, 'facturas': facturas_sin_pagar, 'dif_lectura': dif_lectura, 'subtotal1': total, 'r':r, 'hoy':hoy, 'total': total})
 
     elif cantidad == 2:
 
