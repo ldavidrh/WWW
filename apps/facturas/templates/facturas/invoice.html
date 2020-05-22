@@ -63,71 +63,152 @@
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
-          Cliente - {{factura.contrato.cliente.tipo}}
+          Cliente - {{contrato.cliente.tipo}}
           <address>
-            <strong>{{factura.contrato.cliente.first_name}} {{factura.contrato.cliente.last_name}}</strong><br>
-            {{factura.contrato.cliente.cedula}}<br>
-            {{factura.contrato.direccion}}<br>
-            Teléfono: {{factura.contrato.cliente.telefono}}<br>
-            Email: {{factura.contrato.cliente.email}}
+            <strong>{{contrato.cliente.first_name}} {{factura.contrato.cliente.last_name}}</strong><br>
+            {{contrato.cliente.cedula}}<br>
+            {{contrato.direccion}}<br>
+            Teléfono: {{contrato.cliente.telefono}}<br>
+            Email: {{contrato.cliente.email}}
           </address>
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
-          <b>Factura N° {{factura.id}}</b><br>
+          <b>Factura N° <span id="x">xd</span></b><br>
+          <script>
+            document.write(serial);
+          </script>
           <br>
-          <b>Contrato:</b> {{factura.contrato.id}}<br>
-          <b>Inicio del contrato:</b> {{factura.contrato.fecha_inicio}}<br>
-          <b>Estrato:</b> {{factura.contrato.estrato}}
+          <b>Contrato:</b> {{contrato.id}}<br>
+          <b>Inicio del contrato:</b> {{contrato.fecha_inicio}}<br>
+          <b>Estrato:</b> {{contrato.estrato}}
         </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
       <!-- Table row -->
       <div class="row">
-        <div class="col-12 table-responsive">
+        {% for f in facturas %}
+        <div class="col-md-6">
+          <!-- Widget: user widget style 2 -->
+          <div class="card card-widget widget-user-2">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+
+            <div class="card-footer p-0">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <span class="nav-link">
+                    <strong>N° lectura factura <span class="float-right">{{f.id}}</span></strong>
+                  </span>
+                </li>
+                <li class="nav-item">
+                  <span class="nav-link">
+                    Lectura Actual <span class="float-right">{{f.consumo.lectura_actual}}</span>
+                  </span>
+                </li>
+                <li class="nav-item">
+                  <span class="nav-link">
+                    Lectura Anterior <span class="float-right">{{f.consumo.lectura_anterior}}</span>
+                  </span>
+                </li>
+                <li class="nav-item">
+                  <span class="nav-link">
+                    Diferencia <span class="float-right">{{f.diferencia}}</span>
+                  </span>
+                </li>
+                <li class="nav-item">
+                  <span class="nav-link">
+                    Consumo Actual <span class="float-right">{{f.diferencia}} KWH</span>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+
+        <div class="col-6 table-responsive">
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>Qty</th>
-                <th>Product</th>
-                <th>Serial #</th>
-                <th>Description</th>
-                <th>Subtotal</th>
+                <th>CONCEPTOS</th>
+                <th>Cantidad</th>
+                <th>V. Unitario</th>
+                <th>Total</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>1</td>
-                <td>Call of Duty</td>
-                <td>455-981-221</td>
-                <td>El snort testosterone trophy driving gloves handsome</td>
-                <td>$64.50</td>
+                <td>Consumo de Energia Activa</td>
+                <td>{{f.diferencia}}</td>
+                <td>550,0</td>
+                {% if forloop.first %}
+                <td>{{subtotal1}}</td>
+                {% else %}
+                <td>{{subtotal2}}</td>
+                {% endif %}
               </tr>
               <tr>
-                <td>1</td>
-                <td>Need for Speed IV</td>
-                <td>247-925-726</td>
-                <td>Wes Anderson umami biodiesel</td>
-                <td>$50.00</td>
+                <td>Interes de Mora</td>
+                <td></td>
+                <td></td>
+                <td>{{f.cargo_mora}}</td>
               </tr>
               <tr>
-                <td>1</td>
-                <td>Monsters DVD</td>
-                <td>735-845-642</td>
-                <td>Terry Richardson helvetica tousled street art master</td>
-                <td>$10.70</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Grown Ups Blue Ray</td>
-                <td>422-568-642</td>
-                <td>Tousled lomo letterpress</td>
-                <td>$25.99</td>
+                <td>TOTAL</td>
+                <td></td>
+                <td></td>
+                <td>{{f.total}}</td>
               </tr>
             </tbody>
           </table>
         </div>
+        {% endfor %}
+        <!-- /.col -->
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Widget: user widget style 2 -->
+          <div class="card card-widget widget-user-2">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="card-footer p-0">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <span class="nav-link">
+                    Direccion Instalación <span class="float-right">31</span>
+                  </span>
+                </li>
+                <li class="nav-item">
+                  <span class="nav-link">
+                    {% if contrato.cliente.tipo == 'persona natural' %}
+                    Uso <span class="float-right">Residencial</span>
+                    {% else %}
+                    Uso <span class="float-right">Empresarial</span>
+                    {% endif %}
+                  </span>
+                </li>
+                <li class="nav-item">
+                  <span class="nav-link">
+                    Estrato <span class="float-right">{{contrato.estrato}}</span>
+                  </span>
+                </li>
+                <li class="nav-item">
+                  <span class="nav-link">
+                    No. Contador <span class="float-right">{{contrato.contador.id}}</span>
+                  </span>
+                </li>
+                <li class="nav-item">
+                  <span class="nav-link">
+                    Modelo Contador <span class="float-right">{{contrato.contador.modelo}}</span>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+        <!-- /.col -->
+
         <!-- /.col -->
       </div>
       <!-- /.row -->
@@ -135,39 +216,34 @@
       <div class="row">
         <!-- accepted payments column -->
         <div class="col-6">
-          <p class="lead">Payment Methods:</p>
-          <img src="../../dist/img/credit/visa.png" alt="Visa">
-          <img src="../../dist/img/credit/mastercard.png" alt="Mastercard">
-          <img src="../../dist/img/credit/american-express.png" alt="American Express">
-          <img src="../../dist/img/credit/paypal2.png" alt="Paypal">
-
+          <p class="lead">Metodos de pago:</p>
+          <t3>Tarjetas de credito/débito:</t3>
+          </br>
+          <img src="{% static 'dist/img/credit/visa.png' %}" alt="Visa">
+          <img src="{% static 'dist/img/credit/mastercard.png' %}" alt="Mastercard">
+          <img src="{% static 'dist/img/credit/american-express.png' %}" alt="American Express">
+          </br>
+          <t3>Bancos:</t3>
           <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem
-            plugg
-            dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+            Bancolombia, Banco de Bógota, BBVA
           </p>
         </div>
         <!-- /.col -->
         <div class="col-6">
-          <p class="lead">Amount Due 2/22/2014</p>
 
           <div class="table-responsive">
             <table class="table">
               <tr>
-                <th style="width:50%">Subtotal:</th>
-                <td>$250.30</td>
+                <th style="width:50%">FECHA DE VENCIMIENTO:</th>
+                <td>{{hoy}}</td>
               </tr>
               <tr>
-                <th>Tax (9.3%)</th>
-                <td>$10.34</td>
+                <th>RECONECCIÓN</th>
+                <td>{{r}}</td>
               </tr>
               <tr>
-                <th>Shipping:</th>
-                <td>$5.80</td>
-              </tr>
-              <tr>
-                <th>Total:</th>
-                <td>$265.24</td>
+                <th>TOTAL:</th>
+                <td>${{total}}</td>
               </tr>
             </table>
           </div>
@@ -186,9 +262,6 @@
         <div class="col-12">
           <button type="button" onclick="makePDF();" class="btn btn-primary float-left">
             <i class="fas fa-download"></i> Generar PDF
-          </button>
-          <button type="button" class="btn btn-success float-right">
-            <i class="far fa-credit-card"></i> Realizar Pago
           </button>
         </div>
       </div>
@@ -217,9 +290,36 @@
   <script src="../../dist/js/demo.js"></script>
 
   <script type="text/javascript">
+    function generateSerial() {
+
+      'use strict';
+
+      var chars = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+
+        serialLength = 10,
+
+        randomSerial = "",
+
+        i,
+
+        randomNumber;
+
+      for (i = 0; i < serialLength; i = i + 1) {
+
+        randomNumber = Math.floor(Math.random() * chars.length);
+
+        randomSerial += chars.substring(randomNumber, randomNumber + 1);
+
+      }
+
+      return randomSerial
+
+    }
+    var serial = generateSerial();
+    document.getElementById('x').innerHTML = serial;
+
     function makePDF() {
-      var factura = "{{factura.id}}"
-      document.title = 'Factura N° ' + factura;
+      document.title = 'Factura N° ' + serial;
       window.addEventListener("load", window.print());
     }
   </script>
