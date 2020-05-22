@@ -30,5 +30,6 @@ urlpatterns = [
     path('', views.landing, name='landing'),
     path('subestaciones/', include('apps.subestaciones.urls', namespace='subestaciones')),
     path('transformadores/', include('apps.transformadores.urls', namespace='transformadores')),
+    path('reportes/', include('apps.reportes.urls', namespace='reportes')),
     path('', views.home, name='home'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
