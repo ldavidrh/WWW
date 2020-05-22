@@ -2,20 +2,21 @@
 {% load bootstrap4 %}
 {% block content %}
 {% load i18n %}
-
-<div class="row">
-  <div class="col-12">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">{% blocktrans %}Generar facturas del corte{% endblocktrans %}</h3>
-      </div>
-      <!-- /.card-header -->
-      <div class="card-body table-responsive p-0" style="height: 300px;">
-        <button type="button" class="btn btn-block btn-outline-success btn-lg" onclick="window.location.assign('{% url 'facturas:generar' %}')">{% blocktrans %}Generar y enviar{% endblocktrans %}</button>
-      </div>
-      <!-- /.card-body -->
-    </div>
-    <!-- /.card -->
-  </div>
-</div>
+  <div class="row">
+    <div class="col-12">  
+      <h1>{% blocktrans %}Las facturas solo se pueden generan el 28 de cada mes{% endblocktrans %}</h1>  
+      <h2>{% blocktrans %}Fecha actual: {{hoy}}{% endblocktrans %}</h2>
+      {% if bandera %}
+        <button type="button" class="btn btn-outline-success btn-lg" onclick="desactiva_enlace(this); window.location.assign('{% url 'facturas:generar' %}')">{% blocktrans %}Generar y enviar{% endblocktrans %}</button>  
+      {% else %}
+        <button type="button" class="btn btn-outline-success btn-lg" disabled="disabled" onclick="desactiva_enlace(this); window.location.assign('{% url 'facturas:generar' %}')">{% blocktrans %}Generar y enviar{% endblocktrans %}</button>
+      {% endif %}
 {% endblock content %}
+{% block js%}
+<script>
+  function desactiva_enlace(enlace){
+    enlace.disabled='disabled';
+  }
+</script>
+</script>
+{% endblock js %}

@@ -9,7 +9,7 @@
 <!-- BAR CHART -->
 <div class="card card-primary">
   <div class="card-header">
-      <h3 class="card-title">Consumos mensuales</h3>
+      <h3 class="card-title">Consumos mensuales de {{contrato.cliente}} contrato No. {{contrato.id}}</h3>
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
         <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
@@ -27,9 +27,8 @@
 <script src="{% static 'plugins/chart.js/Chart.min.js'%}"></script>
 <script>
   $(function () {    
-
-    var cantidad = {{cantidad | safe }};
-    var meses = {{meses | safe }};
+    var meses = {{meses | safe}};
+    var consumos = {{consumos | safe}};
     var areaChartData = {
       labels  : meses,
       datasets: [
@@ -42,7 +41,7 @@
           pointStrokeColor    : 'rgba(60,141,188,1)',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : cantidad
+          data                : consumos
         },
       ]
     }         
