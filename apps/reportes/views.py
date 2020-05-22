@@ -46,27 +46,12 @@ def reporte1(request):
 
     return render(request, 'reporte1.html', {'cantidad': valores, 'meses': meses})
 
-def switch_mes(argument):
-    switcher = {
-        1: "Enero",
-        2: "Febrero",
-        3: "Marzo",
-        4: "Abril",
-        5: "Mayo",
-        6: "Junio",
-        7: "Julio",
-        8: "Agosto",
-        9: "Septiembre",
-        10: "Octobre",
-        11: "Noviembre",
-        12: "Diciembre"
-    }
-    return switcher.get(argument, "Invalid month")
-
+@permission_required('usuarios.view_usuario', login_url=None, raise_exception=True)
 def reporte2Menu(request):
     contratos = Contrato.objects.all()
     return render(request, 'reporte2Menu.html', {'contratos': contratos})
 
+@permission_required('usuarios.view_usuario', login_url=None, raise_exception=True)
 def reporte2(request, pk):
 
     contador = Contador.objects.get(contrato__id=pk)
@@ -101,6 +86,16 @@ def reporte2(request, pk):
     print(diferencias)
 
     return render(request, 'reporte2.html', {'contrato': contrato, 'consumos': diferencias, 'meses': meses})
+
+@permission_required('usuarios.view_usuario', login_url=None, raise_exception=True)
+def reporte3(request):
+    clientes_activo = Clientes.objects.filter(aprobado = 'True').count()
+    clientes_inactivo = Clientes.objects.filter(aprobado = 'False').count()
+
+    clientes = [clientes_activo, clientes_inactivo]
+    base = ['Clientes_Activos', 'Clientes_Inactivos']
+
+    return render(request, 'reporte3.html', {'clientes': clientes, 'base': base})
 
 
 def switch_mes(argument):
