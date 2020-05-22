@@ -18,7 +18,7 @@ def Menu(request):
     hoy =  date.today()
     dia = hoy.day
 
-    if dia == 28:
+    if dia == 22:
         facturas = Factura.objects.filter(fecha=hoy)
         if len(facturas) == 0 or len(facturas) == None:
             bandera = True
@@ -243,7 +243,7 @@ def ConsultarFactura(request, idcontrato):
             dif_lectura = f.consumo.lectura_actual - f.consumo.lectura_anterior
             total = dif_lectura*550
             
-            return render(request, 'facturas/invoice.html', {'contrato': contrato, 'facturas': facturas_sin_pagar, 'dif_lectura': dif_lectura, 'subtotal1': total, 'r':r, 'hoy':hoy})
+            return render(request, 'facturas/invoice.html', {'contrato': contrato, 'facturas': facturas_sin_pagar, 'dif_lectura': dif_lectura, 'subtotal1': total, 'r':r, 'hoy':hoy, 'total': total})
 
     elif cantidad == 2:
 
