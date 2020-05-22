@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path, include 
 from django.conf import settings
 from apps.Usuarios import views
+from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
     path('usuarios/', include('apps.Usuarios.urls', namespace='usuarios')),
     path('api/', include('apps.api.urls', namespace='api')),
@@ -28,5 +30,6 @@ urlpatterns = [
     path('', views.landing, name='landing'),
     path('subestaciones/', include('apps.subestaciones.urls', namespace='subestaciones')),
     path('transformadores/', include('apps.transformadores.urls', namespace='transformadores')),
+    path('reportes/', include('apps.reportes.urls', namespace='reportes')),
     path('', views.home, name='home'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

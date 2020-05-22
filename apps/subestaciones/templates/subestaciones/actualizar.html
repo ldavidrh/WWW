@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
 {% load leaflet_tags %}
+{% load i18n %}
 
 {% block content %}
 <div class="card card-primary leaflet-container">
     <div class="card-header">
-      <h3 class="card-title">Actualizar subestacion</h3>
+      <h3 class="card-title">{% blocktrans %}Actualizar subestacion{% endblocktrans %}</h3>
     </div>
     <!-- /.card-header -->
     {% leaflet_map "mimapa" callback="window.map_init_basic" %}
@@ -18,7 +19,7 @@
             <!-- /.card-body -->
       
             <div class="card-footer">
-              <button type="submit" class="btn btn-primary">Actualizar</button>
+              <button type="submit" class="btn btn-primary">{% blocktrans %}Actualizar{% endblocktrans %}</button>
             </div>
           </form>
     </div>

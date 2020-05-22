@@ -2,6 +2,7 @@
 {% load static %}
 <html>
 {% load leaflet_tags %}
+{% load i18n %}
 
 <head>
   {% leaflet_css %}
@@ -48,7 +49,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="{% url 'usuarios:home' %}" class="nav-link">Home</a>
+          <a href="{% url 'usuarios:home' %}" class="nav-link">{% blocktrans %}Home{% endblocktrans %}</a>
         </li>
 
     <!-- Right navbar links -->
@@ -57,20 +58,20 @@
         <li>
           <a class="nav-item nav-link" href="{% url 'usuarios:logout' %}">
             <i class="glyphicon glyphicon-log-in"></i>
-            <span>Cerrar sesión</span>
+            <span>{% blocktrans %}Cerrar sesión{% endblocktrans %}</span>
           </a>
         </li>
         {% else %}
           <li>
               <a class="nav-item nav-link" href="{% url 'usuarios:login' %}">
                 <i class="glyphicon glyphicon-log-in"></i>
-                <span>Iniciar sesión</span>
+                <span>{% blocktrans %}Iniciar sesión{% endblocktrans %}I</span>
               </a>
             </li>
             <li>
               <a class="nav-item nav-link" href="{% url 'usuarios:Opciones' %}">
                 <i class="glyphicon glyphicon-plus"></i>
-                <span>Solicite nuestros servicios</span>
+                <span>{% blocktrans %}Solicite nuestros servicios{% endblocktrans %}I</span>
               </a>
             </li>
         {% endif %}
@@ -109,39 +110,39 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-            <li class="nav-header">Menu</li>
+            <li class="nav-header">{% blocktrans %}Menu{% endblocktrans %}</li>
             {% if user.roles == 'gerente' %}
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon far fa-plus-square"></i>
                 <p>
-                  Reportes
+                  {% blocktrans %}Reportes{% endblocktrans %}
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{% url 'reportes:reporte1' %}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Reporte1</p>
+                    <p>{% blocktrans %}Reporte 1{% endblocktrans %}</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'reportes:reporte2Menu' %}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>{% blocktrans %}Reporte2{% endblocktrans %}</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Reporte2</p>
+                    <p>{% blocktrans %}Reporte3{% endblocktrans %}</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Reporte3</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Reporte4</p>
+                    <p>{% blocktrans %}Reporte4{% endblocktrans %}</p>
                   </a>
                 </li>
 
@@ -158,14 +159,14 @@
             <li class="nav-item">
               <a href="{% url 'usuarios:CrearEmpleado' %}" class="nav-link">
                 <i class="far fa-plus-square"></i>
-                <p> Crear Empleados</p>
+                <p> {% blocktrans %}Crear Empleados{% endblocktrans %}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{% url 'usuarios:ListaEmpleado' %}" class="nav-link">
                 <i class="fas fa-user-tie"></i>
                 <p>
-                  Listar empleados
+                  {% blocktrans %}Listar empleados{% endblocktrans %}
                 </p>
               </a>
             </li>
@@ -173,20 +174,20 @@
               <a href="#" class="nav-link">
                 <i class="fas fa-clipboard-list"></i>
                 <p>
-                  Solicitudes
+                  {% blocktrans %}Solicitudes{% endblocktrans %}
                 </p>
               </a>
               <ul class="nav nav-treeview" style="display: block;">
                 <li class="nav-item">
                   <a href="{% url 'usuarios:ListaSolicitudCliente' %}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Clientes nuevos</p>
+                    <p>{% blocktrans %}Clientes nuevos{% endblocktrans %}</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{% url 'usuarios:ListaSolicitudClienteA' %}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Clientes antiguos</p>
+                    <p>{% blocktrans %}Clientes antiguos{% endblocktrans %}</p>
                   </a>
                 </li>
               </ul>
@@ -196,20 +197,20 @@
               <a href="#" class="nav-link">
                 <i class="fas fa-clipboard-list"></i>
                 <p>
-                  Subestaciones
+                  {% blocktrans %}Subestaciones{% endblocktrans %}
                 </p>
               </a>
               <ul class="nav nav-treeview" style="display: block;">
                 <li class="nav-item">
                   <a href="{% url 'subestaciones:registrar' %}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Registrar</p>
+                    <p>{% blocktrans %}Registrar{% endblocktrans %}</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{% url 'subestaciones:consultar' %}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Consultar</p>
+                    <p>{% blocktrans %}Consultar{% endblocktrans %}</p>
                   </a>
                 </li>
               </ul>
@@ -220,20 +221,20 @@
               <a href="#" class="nav-link">
                 <i class="fas fa-clipboard-list"></i>
                 <p>
-                  Transformadores
+                  {% blocktrans %}Transformadores{% endblocktrans %}
                 </p>
               </a>
               <ul class="nav nav-treeview" style="display: block;">
                 <li class="nav-item">
                   <a href="{% url 'transformadores:registrar' %}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Registrar</p>
+                    <p>{% blocktrans %}Registrar{% endblocktrans %}</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{% url 'transformadores:consultar' %}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Consultar</p>
+                    <p>{% blocktrans %}Consultar{% endblocktrans %}</p>
                   </a>
                 </li>
               </ul>
@@ -245,7 +246,7 @@
               <a href="{% url 'usuarios:ListaCliente' %}" class="nav-link">
                 <i class="fas fa-users"></i>
                 <p>
-                  Lista Clientes
+                  {% blocktrans %}Lista Clientes{% endblocktrans %}
                 </p>
               </a>
             </li>

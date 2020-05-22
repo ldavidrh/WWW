@@ -1,0 +1,58 @@
+{% load static %}
+{% load bootstrap4 %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagar factura</title>
+    <link rel="stylesheet" href="{% static 'dist/css/estilos2.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css' %}">
+
+</head>
+
+<body>
+    <div class="contenedor-form">
+        <div class="formulario">
+            <h2>Pague su factura con el número de contrato</h2>
+            <form method='POST' action="{% url 'facturas:pagar1'%}">
+                {% csrf_token %}
+                <input type="number" name="contrato" id="contrato" class="form-control" placeholder="No. Contrato" required="required">
+                </br>
+                <div class="form-group"> 
+                    <input type="submit" value="Consultar">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{% static 'dist/js/jquery-3.5.1.js' %}"></script>    
+    <script src="{% static 'dist/js/main.js' %}"></script>  
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="{% static 'plugins/sweetalert2/sweetalert2.min.js' %}"></script>
+
+    {% if messages %}
+        {% for message in messages %}
+
+            <script type="text/javascript">
+            $(function() {
+                var mensaje = '{{message | safe}}';
+                var tags = '{{ message.tags | safe }}'
+                console.log(tags)
+                if(mensaje!=null){
+                Swal.fire({
+                    toast: true,
+                    type: tags,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    text: mensaje
+                });
+                }
+            })
+            </script>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
