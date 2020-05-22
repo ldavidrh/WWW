@@ -27,8 +27,11 @@
 <script src="{% static 'plugins/chart.js/Chart.min.js'%}"></script>
 <script>
   $(function () {    
+
+    var cantidad = {{cantidad | safe }};
+    var meses = {{meses | safe }};
     var areaChartData = {
-      labels  : ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+      labels  : meses,
       datasets: [
         {
           label               : 'Consumos',
@@ -39,7 +42,7 @@
           pointStrokeColor    : 'rgba(60,141,188,1)',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [28, 48, 40, 19, 86, 27, 90,200]
+          data                : cantidad
         },
       ]
     }         
