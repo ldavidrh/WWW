@@ -105,7 +105,7 @@ def CrearCliente(request):
 
         #reCAPTCHA
         clientkey = request.POST['g-recaptcha-response']
-        secretkey = '6Lf_6_QUAAAAAB8T3OWQWpsUUIGAJEEXzRYVGA1e'
+        secretkey = '6Le6m-gUAAAAAK3wBynicrFO4VbN_QpYMUE8ipcJ'
         captchaData = {
             'secret' : secretkey,
             'response' : clientkey
