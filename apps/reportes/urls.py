@@ -8,4 +8,5 @@ urlpatterns = [
     path('reporte2Menu/', views.reporte2Menu, name='reporte2Menu'),
     path('reporte2/<int:pk>/', views.reporte2, name='reporte2'),
     path('reporte3/', views.reporte3, name='reporte3'),
+    path('reporte4/', views.reporte4, name='reporte4'),
 ]

@@ -26,6 +26,15 @@ body{
 
 }
 
+.contenedor-invoice {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 48px auto;
+    border-radius: 5px;
+
+}
+
 .contenedor-form .toggle{
     position: absolute;
     top: 7px;

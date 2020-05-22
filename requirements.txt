@@ -27,6 +27,10 @@ six==1.14.0
 soupsieve==1.9.5
 sqlparse==0.3.0
 urllib3==1.25.8
+<<<<<<< HEAD
 vine==1.3.0
 whitenoise==5.1.0
 zipp==3.1.0
+=======
+python-dateutil==2.8.1
+>>>>>>> dev
