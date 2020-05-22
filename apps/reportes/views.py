@@ -116,7 +116,7 @@ def switch_mes(argument):
     return switcher.get(argument, "Invalid month")
 
 def reporte4(request):
-    clientes_mora = Factura.objects.filter(cargo_mora != 0.0).count()
+    clientes_mora = Factura.objects.filter(cargo_mora__gt=0.0, pagada= 'False').count()
 
     clientes = [clientes_mora]
     base = ['Clientes en mora']
