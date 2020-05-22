@@ -54,40 +54,35 @@
       <!-- info row -->
       <div class="row invoice-info">
         <div class="col-sm-4 invoice-col">
-          From
           <address>
-            <strong>Admin, Inc.</strong><br>
-            795 Folsom Ave, Suite 600<br>
-            San Francisco, CA 94107<br>
-            Phone: (804) 123-5432<br>
-            Email: info@almasaeedstudio.com
+            <strong>Electrisoft, Inc.</strong><br>
+            NIT 890.399.003-4<br>
+            Cra 77 A N° 2B - 34<br>
+            Teléfono: 01 8000 910305<br>
           </address>
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
-          To
+          Cliente - {{factura.contrato.cliente.tipo}}
           <address>
-            <strong>John Doe</strong><br>
-            795 Folsom Ave, Suite 600<br>
-            San Francisco, CA 94107<br>
-            Phone: (555) 539-1037<br>
-            Email: john.doe@example.com
+            <strong>{{factura.contrato.cliente.first_name}} {{factura.contrato.cliente.last_name}}</strong><br>
+            {{factura.contrato.cliente.cedula}}<br>
+            {{factura.contrato.direccion}}<br>
+            Teléfono: {{factura.contrato.cliente.telefono}}<br>
+            Email: {{factura.contrato.cliente.email}}
           </address>
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
           <b>Factura N° {{factura.id}}</b><br>
           <br>
-          <b>Order ID:</b> 4F3S8J<br>
-          <b>Payment Due:</b> 2/22/2014<br>
-          <b>Account:</b> 968-34567
+          <b>Contrato:</b> {{factura.contrato.id}}<br>
+          <b>Inicio del contrato:</b> {{factura.contrato.fecha_inicio}}<br>
+          <b>Estrato:</b> {{factura.contrato.estrato}}
         </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
-      <img src="{% static 'dist/img/ads1.jpg' %}" width="300" height="140">
-      <img src="{% static 'dist/img/ads3.jpg' %}" width="277" height="140">
-      <img src="{% static 'dist/img/ads2.jpg' %}" width="380" height="140">
       <!-- Table row -->
       <div class="row">
         <div class="col-12 table-responsive">
@@ -180,7 +175,12 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-
+      <div>
+        <img src="{% static 'dist/img/ads1.jpg' %}" width="300" height="140">
+        <img src="{% static 'dist/img/ads3.jpg' %}" width="277" height="140">
+        <img src="{% static 'dist/img/ads2.jpg' %}" width="380" height="140">
+      </div>
+      </br>
       <!-- this row will not appear when printing -->
       <div class="row no-print">
         <div class="col-12">
@@ -219,7 +219,7 @@
   <script type="text/javascript">
     function makePDF() {
       var factura = "{{factura.id}}"
-      document.title='Factura N° ' + factura;
+      document.title = 'Factura N° ' + factura;
       window.addEventListener("load", window.print());
     }
   </script>
